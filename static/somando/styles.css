@@ -1,0 +1,296 @@
+body {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+header, main, footer {
+    width: min(90%, 1300px);
+    left: 50%;
+    margin: auto;
+}
+
+footer {
+    padding: 20px 0;
+}
+
+.text p {
+    margin: 10px 0;
+}
+
+#profile {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+}
+
+#detail {
+    height: fit-content;
+    margin: auto 0;
+}
+
+.detail-table .icon {
+    text-align: center;
+}
+
+#profile #icon {
+    width: min(300px, 90vw);
+    height: min(300px, 90vw);
+    display: block;
+    border-radius: 30%;
+    margin: auto 30px auto 0;
+}
+
+.prof-about {
+    height: 100%;
+    width: fit-content;
+    margin: auto 30px auto 0;
+}
+
+.prof-about .description {
+    width: fit-content;
+    text-align: left;
+}
+
+#profile #name, .title {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    margin: 0;
+    width: fit-content;
+}
+
+.title, .description {
+    text-align: center;
+    width: 100%;
+}
+
+#profile #name {
+    font-size: 47px;
+    top: 100%;
+}
+
+.section {
+    margin: 50px 0;
+}
+
+.title {
+    font-size: 40px;
+    margin: 0;
+}
+
+.description, .event {
+    font-weight: 400;
+    margin: 5px 0;
+    color: gray;
+}
+
+.icon-text {
+    display: inline-block;
+}
+
+.item-box .date, .item-box .event, .item-box .prize {
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+.item-box .image {
+    width: 100%;
+    height: 125px;
+    overflow: hidden;
+    position: relative;
+    margin: 10px 0;
+}
+
+.item-box .image img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.break-span span {
+    display: inline-block;
+}
+
+.item-box .detail {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.item-box .link {
+    margin: 5px 0;
+}
+
+.item-box .link-product {
+    margin: 7px 0 0 0;
+}
+
+a {
+    color: darkblue;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+a:hover {
+    color: gray;
+    text-decoration: underline;
+    transition-duration: 0.5s;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 25px;
+    margin: 25px auto;
+}
+
+.readmore {
+    text-align: center;
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.skills {
+    width: min(100%, 900px);
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    grid-gap: 20px;
+}
+
+.skill-item {
+    width: 100%;
+    text-align: center;
+}
+
+.skill-item img {
+    margin: auto;
+}
+
+.skill-item p {
+    margin: 10px 0;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    background-color: darkblue;
+    color: white;
+    margin: 0;
+}
+
+footer .description {
+    color: lightgray;
+}
+
+footer .detail-table {
+    width: fit-content;
+    margin: 30px auto;
+}
+
+footer .copyright {
+    text-align: center;
+}
+
+footer a {
+    color: white;
+}
+
+footer .text {
+    text-align: left;
+}
+
+.detail-table .text p {
+    margin: 5px 0;
+    padding-left: 10px;
+}
+
+@keyframes fillImage {
+    0%, 50% {
+        width: auto;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: -10% 0;
+        position: fixed;
+        z-index: 1000;
+    }
+    100% {
+        width: auto;
+        height: min(300px, 90vw);
+        border-radius: 30%;
+        overflow: hidden;
+        position: relative;
+        left: 50%;
+        margin: 10% 0;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (max-width: 912px) {
+
+    header, main, footer {
+        width: 86%;
+        font-size: 13px;
+        letter-spacing: 2px;
+    }
+
+    main {
+        margin: 7%;
+    }
+
+    footer {
+        padding: 7%;
+    }
+
+    #profile {
+        display: block;
+    }
+
+    .title, .description {
+        text-align: left;
+    }
+
+    .grid {
+        display: block;
+    }
+
+    .item-box {
+        margin: 30px 0;
+    }
+
+    #profile #icon {
+        animation-name: fillImage;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+        width: min(300px, 90vw);
+        height: min(300px, 90vw);
+        display: block;
+        margin: 10% 0;
+    }
+    
+    .detail-table {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .detail-table .icon {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .readmore {
+        margin: 20px 0;
+        font-size: 15px;
+    }
+
+    footer .detail-table {
+        width: fit-content;
+        margin: 30px 20px;
+    }
+}

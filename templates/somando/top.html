@@ -1,0 +1,83 @@
+{% extends "somando/layout.html" %}
+{% load static %}
+{% block title %}{% endblock title %}
+{% block content %}
+{% autoescape off %}
+    <header>
+        <div id="profile" class="section">
+            <img id="icon" src="{% static "somando/icon.png" %}" />
+            <div class="prof-about">
+                <h1 id="name">{{ static_profile.name_en }}</h1>
+                <p class="description">{{ static_profile.name_ja }} / {{ static_profile.nickname }}</p>
+                <p class="break-span"><span>{{ static_profile.description }}</span></p>
+            </div>
+            <div id="detail">
+                <table class="detail-table">
+                    {% for profile in profiles %}
+                        <tr>
+                            <td class="icon">{{ profile.fontawesome }}</td>
+                            {% if not profile.url %}
+                                <td class="text"><p class="break-span"><span>{{ profile.detail }}</span></p></td>
+                            {% else %}
+                                <td class="text"><p class="break-span"><a href="{{ profile.url }}" target="_blank" rel="noopener noreferrer"><span>{{ profile.detail }}</span></a> <i class="fa-regular fa-clone"></i></p></td>    
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="experience" class="section">
+            <h2 class="title">Experience</h2>
+            <p class="description">経歴</p>
+            <div class="grid">
+                {% for experience in experiences %}
+                    <div class="item-box">
+                        <p class="date">{{ experience.date }}</p>
+                        <p class="detail break-span"><span>{{ experience.title }}</span></p>
+                        {% if experience.link_url %}
+                            <p class="link"><a href="{{ experience.link_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> {{ experience.link_title }}</a> <i class="fa-regular fa-clone"></i></p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <p class="readmore"><a href="">Read More ></a></p>
+        </div>
+        <div id="experience" class="section">
+            <h2 class="title">Products</h2>
+            <p class="description">開発プロダクト</p>
+            <div class="grid">
+                {% for product in products %}
+                    <div class="item-box">
+                        <div class="image"><img src="{{ product.image }}" /></div>
+                        <p class="detail break-span"><span>{{ product.title }}</span></p>
+                        <p class="event break-span"><span>{{ product.event }}</span>{% if product.team %} / <span>{{ product.team }}</span>{% endif %}</p>
+                        {% if product.prize %}
+                            <p class="prize break-span"><span>{{ product.prize }}</span></p>
+                        {% endif %}
+                        <p class="link-product"><a href="{{ product.github }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a> <i class="fa-regular fa-clone"></i></p>
+                        {% if link_url %}
+                            <p class="link-product"><a href="{{ product.link_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> {{ product.link_title }}</a> <i class="fa-regular fa-clone"></i></p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <p class="readmore"><a href="">Read More ></a></p>
+        </div>
+        <div id="experience" class="section">
+            <h2 class="title">Skills</h2>
+            <p class="description">技術スタック</p>
+            <div class="skills">
+                {% for skill in skills %}
+                    <div class="skill-item">
+                        <img src="https://skillicons.dev/icons?i={{ skill.icon_id }}">
+                        <p>{{ skill.title }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <p class="readmore"><a href="">Read More ></a></p>
+        </div>
+    </main>
+{% endautoescape %}
+{% endblock content %}
