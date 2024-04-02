@@ -71,21 +71,21 @@
             <p class="description fade-in-bottom05 animation-wait">技術スタック</p>
             <div class="skills">
                 {% for skill in skills %}
-                    <div class="skill-item fade-in-bottom05 experience-div animation-wait">
+                    <div class="skill-item fade-in-bottom05 skill-div animation-wait">
                         <img src="https://skillicons.dev/icons?i={{ skill.icon_id }}">
                         <p>{{ skill.title }}</p>
                     </div>
                 {% endfor %}
             </div>
-            <p class="readmore fade-in-bottom05 experience-div animation-wait"><a href="">Read More ></a></p>
+            <p class="readmore fade-in-bottom05 skill-div animation-wait"><a href="">Read More ></a></p>
         </div>
     </main>
     <script src="{% static "somando/fadein.js" %}"></script>
     <script>
         delay_set("profile-line", 2.8);
-        delay_set("experience-div", 0.8, 0.2);
-        delay_set("product-div", 0.8, 0.2);
-        delay_set("skill-div", 0.8, 0.05);
+        delay_set("experience-div", 0.6, 0.2);
+        delay_set("product-div", 0.6, 0.4);
+        delay_set("skill-div", 0.6, 0.1);
     </script>
 {% endautoescape %}
 {% endblock content %}
