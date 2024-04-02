@@ -5,7 +5,7 @@ var prof_items = document.getElementsByClassName('profile-line').length;
 const sleep = (time) => new Promise((r) => setTimeout(r, time));
 
 window.onload = async()=>{
-	await sleep(2500 + prof_items * 100);
+	await sleep(2000 + prof_items * 100);
     var windowHeight = window.innerHeight;
     for (let target of targets) {
         var targetPos = target.getBoundingClientRect().top;
