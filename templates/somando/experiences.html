@@ -5,11 +5,11 @@
 {% autoescape off %}
 <main id="experience-main">
     <div id="experience" class="section">
-        <h2 class="title">Experiences</h2>
-        <p class="description fade-in-bottom05">経歴</p>
+        <h2 class="title animation-wait">Experiences</h2>
+        <p class="description fade-in-bottom05 animation-wait">経歴</p>
         <div class="experience">
             {% for experience in experiences %}
-                <div class="item-box fade-in-bottom05 experience-div">
+                <div class="item-box fade-in-bottom05 experience-div animation-wait">
                     <p class="date">{{ experience.date }}</p>
                     <p class="detail break-span"><span>{{ experience.title }}</span></p>
                     {% if experience.detail %}
