@@ -11,8 +11,29 @@ header, main, footer {
     margin: auto;
 }
 
+main {
+    min-height: 100%;
+}
+
 footer {
     padding: 20px 0;
+}
+
+#fill-image-parent {
+    animation-name: fillImageParent;
+    animation-duration: 3s;
+}
+
+#fill-image {
+    position: absolute;
+    top: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    z-index: 300;
+    animation-name: fillImage;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
 }
 
 .text p {
@@ -48,9 +69,21 @@ footer {
     margin: auto 30px auto 0;
 }
 
+.fade-in-bottom05 {
+    opacity: 0;
+    animation-name: fadeInBottom;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
 .prof-about .description {
     width: fit-content;
     text-align: left;
+    animation-delay: 2.0s;
+}
+
+.prof-about .introduce {
+    animation-delay: 2.2s;
 }
 
 #profile #name, .title {
@@ -61,9 +94,18 @@ footer {
     width: fit-content;
 }
 
+#name, .title {
+    animation-name: fadeInLeft;
+    opacity: 0;
+    animation-duration: 0.5s;
+    animation-delay: 1.8s;
+    animation-fill-mode: forwards;
+}
+
 .title, .description {
     text-align: center;
     width: 100%;
+    animation-delay: 0s;
 }
 
 #profile #name {
@@ -78,6 +120,14 @@ footer {
 .title {
     font-size: 40px;
     margin: 0;
+}
+
+.prof-about .description {
+    animation-delay: 2s;
+}
+
+.description {
+    animation-delay: 0.2s;
 }
 
 .description, .event {
@@ -131,13 +181,13 @@ footer {
 a {
     color: darkblue;
     text-decoration: none;
-    transition-duration: 0.5s;
+    transition-duration: 0.2s;
 }
 
 a:hover {
     color: gray;
     text-decoration: underline;
-    transition-duration: 0.5s;
+    transition-duration: 0.2s;
 }
 
 .grid {
@@ -208,27 +258,62 @@ footer .text {
     padding-left: 10px;
 }
 
-@keyframes fillImage {
-    0%, 50% {
-        width: auto;
-        height: 100vh;
-        overflow: hidden;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: -10% 0;
-        position: fixed;
-        z-index: 1000;
+.animation-wait {
+    animation: none;
+    opacity: 0;
+}
+
+@keyframes fadeInLeft {
+    0% {
+        transform: translateX(-30px);
+        opacity: 0;
     }
     100% {
-        width: auto;
-        height: min(300px, 90vw);
-        border-radius: 30%;
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInBottom {
+    0% {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fillImage {
+    0%, 30% {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 300;
+        opacity: 1;
+    }
+    70%, 100% {
+        opacity: 0;
+        z-index: -1;
+        display: none;
+    }
+}
+
+@keyframes fillImageParent {
+    0%, 69% {
+        width: 100%;
+        height: 100%;
         overflow: hidden;
-        position: relative;
-        left: 50%;
-        margin: 10% 0;
-        transform: translateX(-50%);
+        position: absolute;
+        z-index: 300;
+        top: 0;
+    }
+    70%, 100% {
+        width: 0;
+        height: 0;
+        display: none;
     }
 }
 
@@ -265,13 +350,14 @@ footer .text {
     }
 
     #profile #icon {
-        animation-name: fillImage;
-        animation-duration: 1.5s;
-        animation-fill-mode: forwards;
-        width: min(300px, 90vw);
+        width: auto;
         height: min(300px, 90vw);
-        display: block;
+        border-radius: 30%;
+        overflow: hidden;
+        position: relative;
+        left: 50%;
         margin: 10% 0;
+        transform: translateX(-50%);
     }
     
     .detail-table {
