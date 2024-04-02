@@ -345,7 +345,7 @@ footer .text {
         background-color: rgb(0, 0, 80);
     }
 
-    .description {
+    .description, .event {
         color: lightgray;
     }
 
