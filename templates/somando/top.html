@@ -72,7 +72,8 @@
             <div class="skills">
                 {% for skill in skills %}
                     <div class="skill-item fade-in-bottom05 skill-div animation-wait">
-                        <img src="https://skillicons.dev/icons?i={{ skill.icon_id }}">
+                        <div class="light"><img src="https://skillicons.dev/icons?i={{ skill.icon_id }}&theme=light"></div>
+                        <div class="dark"><img src="https://skillicons.dev/icons?i={{ skill.icon_id }}&theme=dark"></div>
                         <p>{{ skill.title }}</p>
                     </div>
                 {% endfor %}
