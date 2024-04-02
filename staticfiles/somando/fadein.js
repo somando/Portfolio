@@ -5,7 +5,7 @@ var prof_items = document.getElementsByClassName('profile-line').length;
 const sleep = (time) => new Promise((r) => setTimeout(r, time));
 
 window.onload = async()=>{
-    if (location.pathname == "/") {
+    if (location.pathname == "/" || location.pathname == "") {
     	await sleep(2000 + prof_items * 100);
     }
     var windowHeight = window.innerHeight;
