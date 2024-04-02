@@ -1,9 +1,11 @@
 let targets = document.getElementsByClassName('section');
 
+var prof_items = document.getElementsByClassName('profile-line').length;
+
 const sleep = (time) => new Promise((r) => setTimeout(r, time));
 
 window.onload = async()=>{
-	await sleep(3000);
+	await sleep(2500 + prof_items * 100);
     var windowHeight = window.innerHeight;
     for (let target of targets) {
         var targetPos = target.getBoundingClientRect().top;
@@ -12,9 +14,11 @@ window.onload = async()=>{
                 target.classList.add('is-show');
                 var animation_wait = target.getElementsByClassName('animation-wait');
                 var i = 0;
+                var animation_wait_items = animation_wait.length;
                 while (animation_wait.length > i) {
                     animation_wait[0].classList.remove('animation-wait');
                 }
+            	await sleep(1000 + animation_wait_items * 200);
             }
         }
     }
