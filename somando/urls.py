@@ -17,6 +17,10 @@ Including another URLconf
 from django.urls import path
 from . import views
 
+app_name = 'somando'
+
 urlpatterns = [
     path('', views.top, name='top'),
+    path('experiences', views.experiences, name='experiences'),
+    path('products', views.products, name='products'),
 ]

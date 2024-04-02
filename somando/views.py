@@ -34,3 +34,36 @@ def top(request):
         'products': products,
         'skills': skills,
     })
+
+
+def experiences(request):
+    
+    experiences = ExperienceData.objects.all().order_by('date')
+    for experience in experiences:
+        date_list = str(experience.date).split('-')
+        experience.date = date_list[0] + '/' + date_list[1]
+        experience.title = experience.title.replace('\span', "</span><span>")
+        experience.detail = experience.detail.replace('\n', "<br>").replace('\span', "</span><span>")
+    
+    return render(request, 'somando/experiences.html', {
+        'experiences': experiences,
+    })
+
+
+def products(request):
+    
+    products = ProductsData.objects.all().order_by('-date')
+    for product in products:
+        date_list = str(product.date).split('-')
+        product.date = date_list[0] + '/' + date_list[1]
+        product.title = product.title.replace('\span', "</span><span>")
+        product.event = product.event.replace('\span', "</span><span>")
+        product.team = product.team.replace('\span', "</span><span>")
+        product.prize = product.prize.replace('\span', "</span><span>")
+        product.link_title = product.link_title.replace('\span', "</span><span>")
+        product.detail = product.detail.replace('\n', "<br>").replace('\span', "</span><span>")
+    
+    return render(request, 'somando/products.html', {
+        'products': products,
+    })
+

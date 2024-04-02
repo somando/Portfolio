@@ -27,20 +27,20 @@
         <table class="detail-table">
             <tr class="fade-in-bottom05 menu-line animation-wait">
                 <td class="icon"><i class="fa-solid fa-house"></i></td>
-                <td class="text"><p><a href="">トップページ</a></p></td>
+                <td class="text"><p><a href="{% url 'somando:top' %}">トップページ</a></p></td>
             </tr>
             <tr class="fade-in-bottom05 menu-line animation-wait">
                 <td class="icon"><i class="fa-solid fa-clock-rotate-left"></i></td>
-                <td class="text"><p><a href="">経歴</a></p></td>
+                <td class="text"><p><a href="{% url "somando:experiences" %}">経歴</a></p></td>
             </tr>
             <tr class="fade-in-bottom05 menu-line animation-wait">
                 <td class="icon"><i class="fa-regular fa-folder-open"></i></td>
-                <td class="text"><p><a href="">制作プロダクト</a></p></td>
+                <td class="text"><p><a href="{% url "somando:products" %}">制作プロダクト</a></p></td>
             </tr>
-            <tr class="fade-in-bottom05 menu-line animation-wait">
+            {% comment %} <tr class="fade-in-bottom05 menu-line animation-wait">
                 <td class="icon"><i class="fa-solid fa-code"></i></td>
                 <td class="text"><p><a href="">技術スタック</a></p></td>
-            </tr>
+            </tr> {% endcomment %}
         </table>
         <p class="description break-span copyright fade-in-bottom05 menu-line animation-wait"><span>©︎2024 Soma Ando.</span> <span>All Right Reserved.</span></p>
     </footer>

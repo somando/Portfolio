@@ -1,0 +1,36 @@
+{% extends "somando/layout.html" %}
+{% load static %}
+{% block title %}Products{{ block.super }}{% endblock title %}
+{% block content %}
+{% autoescape off %}
+<main id="products-main">
+    <div id="product" class="section">
+        <h2 class="title">Products</h2>
+        <p class="description fade-in-bottom05">開発プロダクト</p>
+        <div class="products">
+            {% for product in products %}
+                <div class="item-box fade-in-bottom05 product-div">
+                    <div class="image"><img src="{{ product.image }}" /></div>
+                    <p class="detail break-span"><span>{{ product.title }}</span></p>
+                    <p class="event break-span"><span>{{ product.date }} {{ product.event }}</span>{% if product.team %} / <span>{{ product.team }}</span>{% endif %}</p>
+                    {% if product.prize %}
+                        <p class="prize break-span"><span>{{ product.prize }}</span></p>
+                    {% endif %}
+                    {% if product.detail %}
+                        <p class="detail-text break-span product-detail">{{ product.detail }}</p>
+                    {% endif %}
+                    <p class="link-product"><a href="{{ product.github }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a> <i class="fa-regular fa-clone"></i></p>
+                    {% if product.link_url %}
+                        <p class="link-product"><a href="{{ product.link_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> {{ product.link_title }}</a> <i class="fa-regular fa-clone"></i></p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+<script src="{% static "somando/fadein.js" %}"></script>
+<script>
+    delay_set("product-div", 0.6, 0.2);
+</script>
+{% endautoescape %}
+{% endblock content %}

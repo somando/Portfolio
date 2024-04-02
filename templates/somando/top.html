@@ -30,20 +30,17 @@
     </header>
     <main>
         <div id="experience" class="section">
-            <h2 class="title animation-wait">Experience</h2>
+            <h2 class="title animation-wait">Experiences</h2>
             <p class="description fade-in-bottom05 animation-wait">経歴</p>
             <div class="grid">
                 {% for experience in experiences %}
                     <div class="item-box fade-in-bottom05 experience-div animation-wait">
                         <p class="date">{{ experience.date }}</p>
                         <p class="detail break-span"><span>{{ experience.title }}</span></p>
-                        {% if experience.link_url %}
-                            <p class="link"><a href="{{ experience.link_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> {{ experience.link_title }}</a> <i class="fa-regular fa-clone"></i></p>
-                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
-            <p class="readmore fade-in-bottom05 experience-div animation-wait"><a href="">Read More ></a></p>
+            <p class="readmore fade-in-bottom05 experience-div animation-wait"><a href="{% url "somando:experiences" %}">Read More ></a></p>
         </div>
         <div id="product" class="section">
             <h2 class="title animation-wait">Products</h2>
@@ -64,7 +61,7 @@
                     </div>
                 {% endfor %}
             </div>
-            <p class="readmore fade-in-bottom05 product-div animation-wait"><a href="">Read More ></a></p>
+            <p class="readmore fade-in-bottom05 product-div animation-wait"><a href="{% url "somando:products" %}">Read More ></a></p>
         </div>
         <div id="skill" class="section">
             <h2 class="title animation-wait">Skills</h2>
@@ -78,7 +75,7 @@
                     </div>
                 {% endfor %}
             </div>
-            <p class="readmore fade-in-bottom05 skill-div animation-wait"><a href="">Read More ></a></p>
+            {% comment %} <p class="readmore fade-in-bottom05 skill-div animation-wait"><a href="">Read More ></a></p> {% endcomment %}
         </div>
     </main>
     <script src="{% static "somando/fadein.js" %}"></script>
