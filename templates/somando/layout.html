@@ -21,28 +21,31 @@
 </head>
 <body>
     {% block content %}{% endblock content %}
-    <footer>
-        <h2 class="title">Menu</h2>
-        <p class="description">メニュー</p>
+    <footer class="section">
+        <h2 class="title animation-wait">Menu</h2>
+        <p class="description fade-in-bottom05 animation-wait">メニュー</p>
         <table class="detail-table">
-            <tr>
+            <tr class="fade-in-bottom05 menu-line animation-wait">
                 <td class="icon"><i class="fa-solid fa-house"></i></td>
                 <td class="text"><p><a href="">トップページ</a></p></td>
             </tr>
-            <tr>
+            <tr class="fade-in-bottom05 menu-line animation-wait">
                 <td class="icon"><i class="fa-solid fa-clock-rotate-left"></i></td>
                 <td class="text"><p><a href="">経歴</a></p></td>
             </tr>
-            <tr>
+            <tr class="fade-in-bottom05 menu-line animation-wait">
                 <td class="icon"><i class="fa-regular fa-folder-open"></i></td>
                 <td class="text"><p><a href="">制作プロダクト</a></p></td>
             </tr>
-            <tr>
+            <tr class="fade-in-bottom05 menu-line animation-wait">
                 <td class="icon"><i class="fa-solid fa-code"></i></td>
                 <td class="text"><p><a href="">技術スタック</a></p></td>
             </tr>
         </table>
-        <p class="description break-span copyright"><span>©︎2024 Soma Ando.</span> <span>All Right Reserved.</span></p>
+        <p class="description break-span copyright fade-in-bottom05 menu-line animation-wait"><span>©︎2024 Soma Ando.</span> <span>All Right Reserved.</span></p>
     </footer>
+    <script>
+        delay_set("menu-line", 0.8, 0.05);
+    </script>
 </body>
 </html>
