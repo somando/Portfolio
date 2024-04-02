@@ -17,6 +17,7 @@ main {
 
 footer {
     padding: 20px 0;
+    margin-bottom: 0;
 }
 
 #fill-image-parent {
@@ -114,7 +115,7 @@ footer {
 }
 
 .section {
-    margin: 50px 0;
+    margin: 100px 0 0 0;
 }
 
 .title {
@@ -347,6 +348,10 @@ footer .text {
 
     .item-box {
         margin: 30px 0;
+    }
+
+    .section {
+        margin: 50px 0 0 0;
     }
 
     #profile #icon {
