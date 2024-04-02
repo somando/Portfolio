@@ -66,4 +66,3 @@ def products(request):
     return render(request, 'somando/products.html', {
         'products': products,
     })
-
