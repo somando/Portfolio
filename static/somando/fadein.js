@@ -20,8 +20,6 @@ window.onload = async()=>{
     }
 }
 
-
-
 window.addEventListener('scroll', function () {
     var scroll = window.scrollY;
     var windowHeight = window.innerHeight;
