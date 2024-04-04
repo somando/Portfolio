@@ -53,10 +53,11 @@ footer {
     font-size: 13px;
 }
 
-.products .skills img {
+.products .skills .skill-item img {
     width: 48px;
     height: 48px;
     object-fit: cover;
+    border-radius: 23%;
 }
 
 #fill-image-parent {
