@@ -1,0 +1,19 @@
+{% extends "somando/layout.html" %}
+{% load static %}
+{% block title %}404 Page Not Found{{ block.super }}{% endblock title %}
+{% block content %}
+{% autoescape off %}
+<main>
+    <div id="product" class="section">
+        <h1 class="title" style="font-size: 100px">500</h1>
+        <h2 class="title" style="font-size: 35px">Server Error</h2>
+        <p class="description fade-in-bottom05 break-span" style="margin-top: 50px"><span>サーバー内で予期せぬエラーが</span><span>発生しました。</span></p>
+            <p class="description fade-in-bottom05 break-span" style="margin-top: 20px"><span>画面下部メニューより</span><span>他のページをご確認ください。</span></p>
+    </div>
+</main>
+<script src="{% static "somando/fadein.js" %}"></script>
+<script>
+    delay_set("product-div", 0.6, 0.2);
+</script>
+{% endautoescape %}
+{% endblock content %}
