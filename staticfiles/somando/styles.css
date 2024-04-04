@@ -56,8 +56,15 @@ footer {
 .products .skills .skill-item img {
     width: 48px;
     height: 48px;
+}
+
+.products .skills .skill-item .technology {
     object-fit: cover;
     border-radius: 23%;
+}
+
+.products .skills .skill-item .infrastracture {
+    object-fit: contain;
 }
 
 #fill-image-parent {

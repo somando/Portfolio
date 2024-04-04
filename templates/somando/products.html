@@ -28,7 +28,7 @@
                                     <div class="light"><img src="{{ technology.1 }}&theme=light"></div>
                                     <div class="dark"><img src="{{ technology.1 }}&theme=dark"></div>
                                 {% else %}
-                                    <img src="{{ technology.1 }}">
+                                    <img src="{{ technology.1 }}" class="technology">
                                 {% endif %}
                                 <p>{{ technology.0 }}</p>
                             </div>
@@ -40,7 +40,7 @@
                         <div class="skills">
                         {% for infrastracture in product.infrastracture %}
                             <div class="skill-item">
-                                <img src="{{ infrastracture.1 }}">
+                                <img src="{{ infrastracture.1 }}" class="infrastracture">
                                 <p>{{ infrastracture.0 }}</p>
                             </div>
                         {% endfor %}
