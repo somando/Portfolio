@@ -48,6 +48,17 @@ footer {
     width: min(600px, 86%);
 }
 
+.products .skills {
+    margin: 20px 0;
+    font-size: 13px;
+}
+
+.products .skills img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+}
+
 #fill-image-parent {
     animation-name: fillImageParent;
     animation-duration: 3s;
@@ -207,8 +218,8 @@ footer {
 }
 
 .item-box .product-detail {
-    font-size: 15px;
     color: black;
+    margin-bottom: 20px;
 }
 
 .item-box .link {

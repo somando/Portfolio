@@ -19,6 +19,33 @@
                     {% if product.detail %}
                         <p class="detail-text break-span product-detail"><span>{{ product.detail }}</span></p>
                     {% endif %}
+                    {% if product.technology %}
+                        <p><b>使用技術</b></p>
+                        <div class="skills">
+                        {% for technology in product.technology %}
+                            <div class="skill-item">
+                                {% if "https://skillicons.dev/icons" in technology.1 %}
+                                    <div class="light"><img src="{{ technology.1 }}&theme=light"></div>
+                                    <div class="dark"><img src="{{ technology.1 }}&theme=dark"></div>
+                                {% else %}
+                                    <img src="{{ technology.1 }}">
+                                {% endif %}
+                                <p>{{ technology.0 }}</p>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if product.infrastracture %}
+                        <p><b>インフラストラクチャ</b></p>
+                        <div class="skills">
+                        {% for infrastracture in product.infrastracture %}
+                            <div class="skill-item">
+                                <img src="{{ infrastracture.1 }}">
+                                <p>{{ infrastracture.0 }}</p>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
                     <p class="link-product"><a href="{{ product.github }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a> <i class="fa-regular fa-clone"></i></p>
                     {% if product.link_url %}
                         <p class="link-product"><a href="{{ product.link_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> {{ product.link_title }}</a> <i class="fa-regular fa-clone"></i></p>

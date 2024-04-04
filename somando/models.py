@@ -30,6 +30,8 @@ class ProductsData(models.Model):
     github = models.URLField(blank=True)
     image = models.URLField(blank=True)
     detail = models.TextField(blank=True)
+    technology = models.TextField(blank=True)
+    infrastracture = models.TextField(blank=True)
     show_top = models.BooleanField(default=False)
     link_title = models.CharField(max_length=100, blank=True)
     link_url = models.URLField(blank=True)

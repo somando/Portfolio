@@ -43,7 +43,7 @@ def experiences(request):
         date_list = str(experience.date).split('-')
         experience.date = date_list[0] + '/' + date_list[1]
         experience.title = experience.title.replace('\span', "</span><span>")
-        experience.detail = experience.detail.replace('\n', "</span><br><span>").replace('\span', "</span><span>")
+        experience.detail = experience.detail.replace('\n', "</span><br><span>").replace('\span', "</span><>")
     
     return render(request, 'somando/experiences.html', {
         'experiences': experiences,
@@ -56,6 +56,18 @@ def products(request):
     for product in products:
         date_list = str(product.date).split('-')
         product.date = date_list[0] + '/' + date_list[1]
+        if product.technology != '':
+            technology_list = product.technology.split('\n')
+            product.technology = []
+            for technology in technology_list:
+                technology = technology.split(' \ ')
+                product.technology.append(technology)
+        if product.infrastracture != '':
+            infrastracture_list = product.infrastracture.split('\n')
+            product.infrastracture = []
+            for infrastructure in infrastracture_list:
+                infrastructure = infrastructure.split(' \ ')
+                product.infrastracture.append(infrastructure)
         product.title = product.title.replace('\span', "</span><span>")
         product.event = product.event.replace('\span', "</span><span>")
         product.team = product.team.replace('\span', "</span><span>")
