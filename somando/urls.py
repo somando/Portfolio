@@ -23,4 +23,5 @@ urlpatterns = [
     path('', views.top, name='top'),
     path('experiences', views.experiences, name='experiences'),
     path('products', views.products, name='products'),
+    path('product/<slug:url>', views.product, name='product'),
 ]

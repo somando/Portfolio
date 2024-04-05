@@ -23,12 +23,14 @@ class ExperienceData(models.Model):
 
 class ProductsData(models.Model):
     title = models.CharField(max_length=100)
+    url = models.CharField(max_length=100, blank=True)
     event = models.CharField(max_length=100, blank=True)
     date = models.DateField()
     team = models.CharField(max_length=100, blank=True)
     prize = models.CharField(max_length=100, blank=True)
     github = models.URLField(blank=True)
     image = models.URLField(blank=True)
+    about = models.TextField(blank=True)
     detail = models.TextField(blank=True)
     technology = models.TextField(blank=True)
     infrastracture = models.TextField(blank=True)
@@ -40,4 +42,3 @@ class SkillData(models.Model):
     title = models.CharField(max_length=100)
     icon_id = models.CharField(max_length=100)
     detail = models.TextField(blank=True)
-    date = models.DateField()

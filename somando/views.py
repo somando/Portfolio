@@ -73,8 +73,38 @@ def products(request):
         product.team = product.team.replace('\span', "</span><span>")
         product.prize = product.prize.replace('\span', "</span><span>")
         product.link_title = product.link_title.replace('\span', "</span><span>")
-        product.detail = product.detail.replace('\n', "</span><br><span>").replace('\span', "</span><span>")
+        product.about = product.about.replace('\n', "</span><br><span>").replace('\span', "</span><span>")
     
     return render(request, 'somando/products.html', {
         'products': products,
+    })
+
+def product(request, url):
+    
+    product = ProductsData.objects.get(url=url)
+    
+    date_list = str(product.date).split('-')
+    product.date = date_list[0] + '/' + date_list[1]
+    if product.technology != '':
+        technology_list = product.technology.split('\n')
+        product.technology = []
+        for technology in technology_list:
+            technology = technology.split(' \ ')
+            product.technology.append(technology)
+    if product.infrastracture != '':
+        infrastracture_list = product.infrastracture.split('\n')
+        product.infrastracture = []
+        for infrastructure in infrastracture_list:
+            infrastructure = infrastructure.split(' \ ')
+            product.infrastracture.append(infrastructure)
+    product.title = product.title.replace('\span', "</span><span>")
+    product.event = product.event.replace('\span', "</span><span>")
+    product.team = product.team.replace('\span', "</span><span>")
+    product.prize = product.prize.replace('\span', "</span><span>")
+    product.link_title = product.link_title.replace('\span', "</span><span>")
+    product.about = product.about.replace('\n', "</span><br><span>").replace('\span', "</span><span>")
+    product.detail = product.detail.replace('\n', "</span><br><span>").replace('\span', "</span><span>")
+    
+    return render(request, 'somando/product.html', {
+        'product': product,
     })
