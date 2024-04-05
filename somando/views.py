@@ -81,6 +81,9 @@ def products(request):
 
 def product(request, url):
     
+    if (ProductsData.objects.filter(url=url).count() == 0):
+        return render(request, '404.html')
+    
     product = ProductsData.objects.get(url=url)
     
     date_list = str(product.date).split('-')
