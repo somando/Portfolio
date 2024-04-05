@@ -53,6 +53,10 @@ a img:hover {
     transition: 0.3s;
 }
 
+.br {
+    margin-top: 5px;
+}
+
 #products-main {
     width: min(600px, 86%);
 }
