@@ -243,6 +243,10 @@ a img:hover {
     font-size: 16px;
 }
 
+.item-box .detail-text .black {
+    color: black;
+}
+
 .item-box .detail-text .red {
     color: red;
 }
@@ -458,6 +462,10 @@ footer .text {
     }
 
     footer a {
+        color: white;
+    }
+
+    .item-box .detail-text .black {
         color: white;
     }
 
