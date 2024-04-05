@@ -25,7 +25,7 @@ def top(request):
         product.prize = product.prize.replace('\span', "</span><span>")
         product.link_title = product.link_title.replace('\span', "</span><span>")
     
-    skills = SkillData.objects.all().order_by('date')
+    skills = SkillData.objects.all()
     
     return render(request, 'somando/top.html', {
         'static_profile': static_profile,
