@@ -44,6 +44,15 @@ footer {
     height: 200px;
 }
 
+a img {
+    transition: 0.3s;
+}
+
+a img:hover {
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
 #products-main {
     width: min(600px, 86%);
 }
