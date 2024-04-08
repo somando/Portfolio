@@ -106,7 +106,7 @@ def product(request, url):
     product.prize = product.prize.replace('\span', "</span><span>")
     product.link_title = product.link_title.replace('\span', "</span><span>")
     product.about = product.about.replace('\n', "</span><br><span>").replace('\span', "</span><span>")
-    product.detail = product.detail.replace('\n', "</span><br><span>").replace('\span', "</span><span>")
+    product.detail = product.detail.replace('\n', "</span></span><br><span class='br'><span>").replace('\span', "</span><span>")
     
     return render(request, 'somando/product.html', {
         'product': product,

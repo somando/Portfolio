@@ -222,7 +222,7 @@ a img:hover {
     transform: translateY(-50%);
 }
 
-.break-span span {
+.break-span span, .br span {
     display: inline-block;
     max-width: 100%;
 }
