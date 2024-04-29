@@ -111,3 +111,11 @@ def product(request, url):
     return render(request, 'somando/product.html', {
         'product': product,
     })
+
+def termsOfUse(request):
+    
+    return render(request, 'somando/terms-of-use.html')
+
+def privacyPolicy(request):
+    
+    return render(request, 'somando/privacy-policy.html')

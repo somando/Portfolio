@@ -1,0 +1,47 @@
+{% extends "somando/layout.html" %}
+{% load static %}
+{% block title %}Terms of Use{{ block.super }}{% endblock title %}
+{% block content %}
+{% autoescape off %}
+<main id="terms-of-use-main">
+    <div id="terms-of-use" class="section">
+        <h2 class="title animation-wait">Terms of Use</h2>
+        <p class="description fade-in-bottom05 animation-wait">利用規約</p>
+        <div class="terms-of-use">
+            <div class="item-box fade-in-bottom05 terms-of-use-div animation-wait">
+                <p class="number">1</p>
+                <p class="detail break-span"><span>免責事項</span></p>
+                <p class="detail-text break-span"><span>当サイトに</span><span>掲載されている</span><span>情報の</span><span>正確性には</span><span>万全を</span><span>期していますが、</span><span>閲覧者が</span><span>当サイトの</span><span>情報を</span><span>用いて行う</span><span>一切の</span><span>行為に関して、</span><span>一切の責任を</span><span>負わないものとします。</span></p>
+                <p class="detail-text break-span"><span>閲覧者が</span><span>当サイトを</span><span>利用したことにより</span><span>生じた</span><span>閲覧者の損害及び</span><span>閲覧者が</span><span>第三者に与えた</span><span>損害に関して、</span><span>一切の</span><span>責任を</span><span>負わないものとします。</span></p>
+            </div>
+            <div class="item-box fade-in-bottom05 terms-of-use-div animation-wait">
+                <p class="number">2</p>
+                <p class="detail break-span"><span>著作権</span></p>
+                <p class="detail-text break-span"><span>当サイト内の</span><span>文章など</span><span>全ての</span><span>コンテンツは</span><span>著作権法等により</span><span>保護されています。</span></p>
+                <p class="detail-text break-span"><span>無断での</span><span>使用や</span><span>転用は</span><span>禁止されています。</span></p>
+            </div>
+            <div class="item-box fade-in-bottom05 terms-of-use-div animation-wait">
+                <p class="number">3</p>
+                <p class="detail break-span"><span>リンクについて</span></p>
+                <p class="detail-text break-span"><span>当サイトは</span><span>原則</span><span>リンクフリーです。</span></p>
+                <p class="detail-text break-span"><span>リンク設置時の</span><span>許可・</span><span>連絡は</span><span>必要ありません。</span></p>
+            </div>
+            <div class="item-box fade-in-bottom05 terms-of-use-div animation-wait">
+                <p class="number">4</p>
+                <p class="detail break-span"><span>準拠法</span></p>
+                <p class="detail-text break-span"><span>本規約の効力、</span><span>内容及び</span><span>解釈に</span><span>関しては</span><span>日本法が</span><span>適用されるものと</span><span>します。</span></p>
+            </div>
+            <div class="item-box fade-in-bottom05 terms-of-use-div animation-wait">
+                <p class="number">5</p>
+                <p class="detail break-span"><span>利用規約の</span><span>制定日</span></p>
+                <p class="detail-text break-span"><span>制定：</span><span>2024年4月2日</span></p>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="{% static "somando/fadein.js" %}"></script>
+<script>
+    delay_set("terms-of-use-div", 0.6, 0.2);
+</script>
+{% endautoescape %}
+{% endblock content %}

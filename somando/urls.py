@@ -24,4 +24,6 @@ urlpatterns = [
     path('experiences', views.experiences, name='experiences'),
     path('products', views.products, name='products'),
     path('product/<slug:url>', views.product, name='product'),
+    path('privacy-policy/', views.privacyPolicy, name='privacy-policy'),
+    path('terms-of-use/', views.termsOfUse, name='terms-of-use'),
 ]

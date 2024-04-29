@@ -1,0 +1,48 @@
+{% extends "somando/layout.html" %}
+{% load static %}
+{% block title %}Privacy Policy{{ block.super }}{% endblock title %}
+{% block content %}
+{% autoescape off %}
+<main id="privacy-policy-main">
+    <div id="privacy-policy" class="section">
+        <h2 class="title animation-wait">Privacy Policy</h2>
+        <p class="description fade-in-bottom05 animation-wait">個人情報保護方針</p>
+        <div class="privacy-policy">
+            <div class="item-box fade-in-bottom05 privacy-policy-div animation-wait">
+                <p class="detail break-span"><span>個人情報保護方針</span></p>
+                <p class="detail-text break-span"><span>閲覧者の</span><span>個人情報について</span><span>以下の通り</span><span>プライバシーポリシーを</span><span>定めます。</span></p>
+                <p class="detail-text break-span"><span>当ポリシーは、</span><span>運営者が</span><span>どのような</span><span>個人情報を</span><span>取得し、</span><span>どのように利用・</span><span>共有するか、</span><span>閲覧者が</span><span>どのように</span><span>ご自身の</span><span>個人情報を</span><span>管理できるかを</span><span>ご説明するものです。</span></p>
+            </div>
+            <div class="item-box fade-in-bottom05 privacy-policy-div animation-wait">
+                <p class="number">1</p>
+                <p class="detail break-span"><span>個人情報</span><span>取扱いに</span><span>関する</span><span>相談や</span><span>苦情の</span><span>連絡先</span></p>
+                <p class="detail-text break-span"><span>個人情報取扱いに</span><span>関するご質問や</span><span>ご不明点、</span><span>苦情、</span><span>その他のお問い合わせは</span><span>下記メールアドレスより</span><span>ご連絡ください。</span></p>
+                <p class="link"><a href="mailto:ando.s@teraddition.com" target="_blank" rel="noopener noreferrer"><i class="fa-regular fa-envelope"></i> ando.s@teraddition.com</a> <i class="fa-regular fa-clone"></i></p>
+            </div>
+            <div class="item-box fade-in-bottom05 privacy-policy-div animation-wait">
+                <p class="number">2</p>
+                <p class="detail break-span"><span>SSL</span> <span>(Secure Socket Layer)</span> <span>について</span></p>
+                <p class="detail-text break-span"><span>当サイトは</span><span>SSLに</span><span>対応しており、</span><span>閲覧者の</span><span>Webブラウザと</span><span>運営者の</span><span>Webサーバ間の</span><span>通信を</span><span>暗号化しています。</span></p>
+            </div>
+            <div class="item-box fade-in-bottom05 privacy-policy-div animation-wait">
+                <p class="number">3</p>
+                <p class="detail break-span"><span>アクセス解析ツール</span><span>について</span></p>
+                <p class="detail-text break-span"><span>当サイトでは</span><span>Google社が提供する</span><span>アクセス解析ツール</span><span>「Google Analytics」及び</span><span>「Google Search Console」を</span><span>利用しています。</span></p>
+                <p class="detail-text break-span"><span>このサービスは、</span><span>トラフィックデータを</span><span>収集するために</span><span>Cookieを</span><span>使用していますが、</span><span>トラフィックデータは</span><span>匿名で</span><span>収集されているため</span><span>個人を</span><span>特定できるものでは</span><span>ありません。</span></p>
+                <p class="detail-text break-span"><span>この規約についての詳細は</span><span>下記リンクを</span><span>ご覧ください。</span></p>
+                <p class="link privacy-policy-link"><a href="https://marketingplatform.google.com/about/analytics/terms/jp/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-info"></i> Google アナリティクス利用規約</a> <i class="fa-regular fa-clone"></i></p>
+            </div>
+            <div class="item-box fade-in-bottom05 privacy-policy-div animation-wait">
+                <p class="number">4</p>
+                <p class="detail break-span"><span>プライバシーポリシーの</span><span>制定日</span></p>
+                <p class="detail-text break-span"><span>制定：</span><span>2024年4月2日</span></p>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="{% static "somando/fadein.js" %}"></script>
+<script>
+    delay_set("privacy-policy-div", 0.6, 0.2);
+</script>
+{% endautoescape %}
+{% endblock content %}

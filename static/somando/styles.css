@@ -21,15 +21,15 @@ footer {
     margin-bottom: 0;
 }
 
-.experience, .products {
+.experience, .products, .privacy-policy, .terms-of-use {
     margin: 50px 0;
 }
 
-.experience .item-box {
+.experience .item-box, .privacy-policy .item-box, .terms-of-use .item-box {
     margin: 45px 0;
 }
 
-#experience-main {
+#experience-main, #privacy-policy-main, #terms-of-use-main {
     width: fit-content;
     max-width: min(600px, 86%);
     min-width: min(400px, 86%);
@@ -201,7 +201,7 @@ a img:hover {
     display: inline-block;
 }
 
-.item-box .date, .item-box .event, .item-box .prize {
+.item-box .date, .item-box .event, .item-box .prize, .item-box .number {
     font-size: 12px;
     margin: 5px 0;
 }
@@ -343,21 +343,33 @@ footer {
     margin: 0;
 }
 
-footer .description {
-    color: lightgray;
-}
-
 footer .detail-table {
     width: fit-content;
     margin: 30px auto;
 }
 
-footer .copyright {
+footer .copyright, footer .rule {
     text-align: center;
 }
 
 footer a {
     color: white;
+}
+
+footer .description {
+    color: lightgray;
+}
+
+footer #rule {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+footer #rule p {
+    display: inline-block;
+    width: fit-content;
+    margin: 0 5px;
+    font-size: 13px;
 }
 
 footer .text {
@@ -376,6 +388,10 @@ footer .text {
 
 .dark {
     display: none;
+}
+
+.privacy-policy-link {
+    font-size: 13px;
 }
 
 @keyframes fadeInLeft {
