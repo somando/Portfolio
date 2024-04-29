@@ -27,22 +27,18 @@
         <table class="detail-table">
             <tr class="fade-in-bottom05 menu-line animation-wait">
                 <td class="icon"><i class="fa-solid fa-house"></i></td>
-                <td class="text"><p><a href="{% url 'somando:top' %}">トップページ</a></p></td>
+                <td class="text"><p><a href="{{ url }}{% url 'somando:top' %}">トップページ</a></p></td>
             </tr>
             <tr class="fade-in-bottom05 menu-line animation-wait">
                 <td class="icon"><i class="fa-solid fa-clock-rotate-left"></i></td>
-                <td class="text"><p><a href="{% url "somando:experiences" %}">経歴</a></p></td>
+                <td class="text"><p><a href="{{ url }}{% url "somando:experiences" %}">経歴</a></p></td>
             </tr>
             <tr class="fade-in-bottom05 menu-line animation-wait">
                 <td class="icon"><i class="fa-regular fa-folder-open"></i></td>
-                <td class="text"><p><a href="{% url "somando:products" %}">制作プロダクト</a></p></td>
+                <td class="text"><p><a href="{{ url }}{% url "somando:products" %}">制作プロダクト</a></p></td>
             </tr>
-            {% comment %} <tr class="fade-in-bottom05 menu-line animation-wait">
-                <td class="icon"><i class="fa-solid fa-code"></i></td>
-                <td class="text"><p><a href="">技術スタック</a></p></td>
-            </tr> {% endcomment %}
         </table>
-        <p class="description break-span copyright fade-in-bottom05 menu-line animation-wait"><span>©︎{{ year }} Soma Ando.</span> <span>All Right Reserved.</span></p>
+        <p class="description break-span copyright fade-in-bottom05 menu-line animation-wait"><span>©︎{% if year > 2024 %}2024-{% endif %}{{ year }} Soma Ando.</span> <span>All Right Reserved.</span></p>
     </footer>
     <script>
         delay_set("menu-line", 0.5, 0.05);
