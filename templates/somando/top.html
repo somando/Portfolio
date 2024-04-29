@@ -54,7 +54,9 @@
                         {% if product.prize %}
                             <p class="prize break-span"><span>{{ product.prize }}</span></p>
                         {% endif %}
-                        <p class="link-product"><a href="{{ product.github }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a> <i class="fa-regular fa-clone"></i></p>
+                        {% if product.github %}
+                            <p class="link-product"><a href="{{ product.github }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a> <i class="fa-regular fa-clone"></i></p>
+                        {% endif %}
                         {% if product.link_url %}
                             <p class="link-product"><a href="{{ product.link_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> {{ product.link_title }}</a> <i class="fa-regular fa-clone"></i></p>
                         {% endif %}
