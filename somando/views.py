@@ -122,6 +122,10 @@ def contact(request):
     
     if request.method == "GET":
         
+        response = render(request, 'somando/contact.html', {
+            'open': False,
+        })
+        
         if request.COOKIES.get('contact_room_id') != None:
             
             room_id = request.COOKIES.get('contact_room_id')
@@ -139,10 +143,11 @@ def contact(request):
                         'email': room.email,
                         'auth': auth_code,
                     })
+            
+            response.delete_cookie('contact_room_id')
+            response.delete_cookie('contact_room_auth')
         
-        return render(request, 'somando/contact.html', {
-            'open': False,
-        })
+        return response
     
     elif request.method == "POST":
         
@@ -182,6 +187,7 @@ def contact(request):
         response = render(request, 'somando/submitted.html', {
             'auth': auth_code,
             'id': room_id,
+            'email': email,
         })
         response.set_cookie('contact_room_id', room_id)
         response.set_cookie('contact_room_auth', auth_code)
