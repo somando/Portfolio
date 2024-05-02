@@ -1,4 +1,4 @@
-body {
+body, .contact-button button {
     font-family: 'Zen Kaku Gothic New', sans-serif;
     font-weight: 400;
     letter-spacing: 2px;
@@ -21,15 +21,15 @@ footer {
     margin-bottom: 0;
 }
 
-.experience, .products, .privacy-policy, .terms-of-use {
+.experience, .products, .contact, .privacy-policy, .terms-of-use {
     margin: 50px 0;
 }
 
-.experience .item-box, .privacy-policy .item-box, .terms-of-use .item-box {
+.experience .item-box, .privacy-policy .item-box, .terms-of-use .item-box, .contact .item-box {
     margin: 45px 0;
 }
 
-#experience-main, #privacy-policy-main, #terms-of-use-main {
+#experience-main, #contact-main, #privacy-policy-main, #terms-of-use-main {
     width: fit-content;
     max-width: min(600px, 86%);
     min-width: min(400px, 86%);
@@ -333,6 +333,48 @@ a:hover {
 
 .skill-item p {
     margin: 10px 0;
+}
+
+.contact-input {
+    width: calc(100% - 20px);
+    height: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    border: gray 1px solid;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.contact-textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: '';
+}
+
+.required {
+    color: red;
+    margin-left: 5px;
+}
+
+.contact-button {
+    text-align: center;
+}
+
+.contact-button button {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: darkblue;
+    color: white;
+    font-size: 15px;
+    transition-duration: 0.2s;
+    margin-bottom: 20px;
+}
+
+.contact-button button:hover {
+    background-color: gray;
+    transition-duration: 0.2s;
 }
 
 footer {

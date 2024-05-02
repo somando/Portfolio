@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.core.mail import send_mail
 from .models import *
+import random, string
 
 # Create your views here.
 def top(request):
@@ -111,6 +113,50 @@ def product(request, url):
     return render(request, 'somando/product.html', {
         'product': product,
     })
+
+def randomname(n):
+    return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
+
+
+def contact(request):
+    
+    if request.method == "GET":
+        
+        return render(request, 'somando/contact.html')
+    
+    elif request.method == "POST":
+        
+        name = request.POST['name']
+        email = request.POST['email']
+        organization = request.POST['organization']
+        details = request.POST['details']
+        
+        while True:
+            room_id = randomname(20)
+            if ContactRoomData.objects.filter(room_id=room_id).count() == 0:
+                break
+        
+        ContactRoomData.objects.create(
+            room_id = room_id,
+            auth_code = randomname(6),
+            email = email,
+        )
+        
+        ContactMessageData.objects.create(
+            room_id = room_id,
+            user = name,
+            organization = organization,
+            admin = False,
+            message = details,
+        )
+        
+        subject = 'お問い合わせを受け付けました｜Soma Ando'
+        
+        message = name + email + organization + details
+        
+        send_mail(subject, message, 'no-reply@somando.jp', [email])
+        
+        return render(request, 'somando/submitted.html')
 
 def termsOfUse(request):
     

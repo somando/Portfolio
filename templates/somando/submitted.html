@@ -1,0 +1,27 @@
+{% extends "somando/layout.html" %}
+{% load static %}
+{% block title %}Contact{{ block.super }}{% endblock title %}
+{% block content %}
+{% autoescape off %}
+<main id="contact-main">
+    <div id="contact" class="section">
+        <h2 class="title animation-wait">Contact</h2>
+        <p class="description fade-in-bottom05 animation-wait">お問い合わせ</p>
+        <div class="contact">
+            <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                <p class="detail break-span"><span>お問い合わせを</span><span>受け付けました</span></p>
+                <p class="detail-text break-span"><span>ご入力いただいた</span><span>メールアドレス宛に</span><span>送信内容についての</span><span>自動返信メールが</span><span>送信されます。</span></p>
+                <p class="detail-text break-span"><span>自動返信メールが</span><span>受信できていない場合は</span><span>ドメイン・</span><span>指定受信・</span><span>本文にURLのある</span><span>メールの</span><span>受信拒否等の</span><span>制限が</span><span>かかっている</span><span>場合が</span><span>あります。</span></p>
+                <p class="detail-text break-span"><span>受信できなかった方は</span><span>@somando.jpの</span><span>ドメイン受信設定を</span><span>お願いします。</span></p>
+                <p class="detail-text break-span"><span>ご回答には</span><span>お時間を</span><span>頂く場合も</span><span>ございますので、</span><span>予めご了承ください。</span></p>
+                <p class="detail-text break-span"><span>問い合わせ後は</span><span>自動送信された</span><span>URLより、</span><span>メッセージを</span><span>送信してください。</span></p>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="{% static "somando/fadein.js" %}"></script>
+<script>
+    delay_set("contact-div", 0.6, 0.2);
+</script>
+{% endautoescape %}
+{% endblock content %}

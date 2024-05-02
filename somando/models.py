@@ -42,3 +42,18 @@ class SkillData(models.Model):
     title = models.CharField(max_length=100)
     icon_id = models.CharField(max_length=100)
     detail = models.TextField(blank=True)
+
+class ContactRoomData(models.Model):
+    room_id = models.CharField(max_length=20, unique=True)
+    auth_code = models.CharField(max_length=6, blank=True)
+    email = models.EmailField()
+    progress = models.BooleanField(default=False)
+    close = models.BooleanField(default=False)
+
+class ContactMessageData(models.Model):
+    room_id = models.CharField(max_length=20)
+    user = models.CharField(max_length=100)
+    organization = models.CharField(max_length=100, blank=True)
+    admin = models.BooleanField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
