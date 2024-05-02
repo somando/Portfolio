@@ -375,6 +375,7 @@ a:hover {
 .contact-button button:hover {
     background-color: gray;
     transition-duration: 0.2s;
+    cursor: pointer;
 }
 
 footer {
