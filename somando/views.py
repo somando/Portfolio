@@ -154,7 +154,7 @@ def contact(request):
         
         message = name + email + organization + details
         
-        send_mail(subject, message, 'no-reply@somando.jp', [email])
+        send_mail(subject, message, 'no-reply@somando.jp', ['info@somando.jp', email])
         
         return render(request, 'somando/submitted.html')
 

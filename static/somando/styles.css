@@ -348,7 +348,7 @@ a:hover {
 .contact-textarea {
     min-height: 120px;
     resize: vertical;
-    font-family: '';
+    font-family: sans-serif;
 }
 
 .required {
