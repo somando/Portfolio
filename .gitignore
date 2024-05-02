@@ -162,3 +162,5 @@ cython_debug/
 # Other Files
 .vscode
 .DS_Store
+
+staticfiles/
