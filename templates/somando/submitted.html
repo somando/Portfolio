@@ -16,6 +16,11 @@
                 <p class="detail-text break-span"><span>ご回答には</span><span>お時間を</span><span>頂く場合も</span><span>ございますので、</span><span>予めご了承ください。</span></p>
                 <p class="detail-text break-span"><span>問い合わせ後は</span><span>自動送信された</span><span>URLより、</span><span>メッセージを</span><span>送信してください。</span></p>
             </div>
+            <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                <p class="detail break-span"><span>お問い合わせ中の</span><span>ルーム</span></p>
+                <p class="detail-text break-span"><span>ルームID:</span> <span><a href="{% url "somando:contactChat" id %}?auth={{ auth }}">{{ id }}</a></span></p>
+                <p class="detail-text break-span"><span>登録メールアドレス:</span> <span>{{ email }}</span></p>
+            </div>
         </div>
     </div>
 </main>

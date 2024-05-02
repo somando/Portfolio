@@ -10,6 +10,15 @@
         <form method="post">
             {% csrf_token %}
             <div class="contact">
+                {% if open %}
+                    <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                        <p class="detail break-span"><span>お問い合わせ中の</span><span>ルーム</span></p>
+                        <p class="detail-text break-span"><span>お問い合わせ中の</span><span>ルームが</span><span>見つかりました。</span></p>
+                        <p class="detail-text break-span"><span>ルームIDを</span><span>クリックすることで、</span><span>今までのメッセージの</span><span>確認や再開・返信が</span><span>可能です。</span></p>
+                        <p class="detail-text break-span"><span>ルームID:</span> <span><a href="{% url "somando:contactChat" id %}?auth={{ auth }}">{{ id }}</a></span></p>
+                        <p class="detail-text break-span"><span>登録メールアドレス:</span> <span>{{ email }}</span></p>
+                    </div>
+                {% endif %}
                 <div class="item-box fade-in-bottom05 contact-div animation-wait">
                     <p class="detail break-span"><span>注意事項</span></p>
                     <p class="detail-text break-span"><span>ドメイン・</span><span>指定受信・</span><span>本文にURLのある</span><span>メールの</span><span>受信拒否等の</span><span>制限を</span><span>かけている方は</span><span>運営者からの</span><span>メールが</span><span>受信できない場合が</span><span>あります。</span></p>

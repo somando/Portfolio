@@ -122,7 +122,27 @@ def contact(request):
     
     if request.method == "GET":
         
-        return render(request, 'somando/contact.html')
+        if request.COOKIES.get('contact_room_id') != None:
+            
+            room_id = request.COOKIES.get('contact_room_id')
+            auth_code = request.COOKIES.get('contact_room_auth')
+            
+            if ContactRoomData.objects.filter(room_id=room_id, close=False).exists():
+                
+                room = ContactRoomData.objects.get(room_id=room_id)
+                
+                if room.auth_code == auth_code:
+                    
+                    return render(request, 'somando/contact.html', {
+                        'open': True,
+                        'id': room_id,
+                        'email': room.email,
+                        'auth': auth_code,
+                    })
+        
+        return render(request, 'somando/contact.html', {
+            'open': False,
+        })
     
     elif request.method == "POST":
         
@@ -136,9 +156,11 @@ def contact(request):
             if ContactRoomData.objects.filter(room_id=room_id).count() == 0:
                 break
         
+        auth_code = randomname(6)
+        
         ContactRoomData.objects.create(
             room_id = room_id,
-            auth_code = randomname(6),
+            auth_code = auth_code,
             email = email,
         )
         
@@ -154,9 +176,22 @@ def contact(request):
         
         message = name + email + organization + details
         
-        send_mail(subject, message, 'no-reply@somando.jp', ['info@somando.jp', email])
+        send_mail(subject, message, 'no-reply@somando.jp', [email])
+        send_mail(subject, message, 'no-reply@somando.jp', ['info@somando.jp'])
         
-        return render(request, 'somando/submitted.html')
+        response = render(request, 'somando/submitted.html', {
+            'auth': auth_code,
+            'id': room_id,
+        })
+        response.set_cookie('contact_room_id', room_id)
+        response.set_cookie('contact_room_auth', auth_code)
+        
+        return response
+
+def contactChat(request, id):
+    return render(request, 'somando/contact-chat.html', {
+        'id': id,
+    })
 
 def termsOfUse(request):
     
