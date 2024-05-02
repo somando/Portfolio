@@ -34,3 +34,17 @@ class SkillDataAdmin(admin.ModelAdmin):
     search_fields = ('title', 'icon_id', 'detail',) 
 
 admin.site.register(SkillData, SkillDataAdmin)
+
+class ContactRoomDataAdmin(admin.ModelAdmin):
+    list_display = ('room_id', 'auth_code', 'email', 'progress', 'close')
+    list_filter = ('progress', 'close',)
+    search_fields = ('room_id', 'email',)
+
+admin.site.register(ContactRoomData, ContactRoomDataAdmin)
+
+class ContactMessageDataAdmin(admin.ModelAdmin):
+    list_display = ('room_id', 'user', 'organization', 'admin', 'message', 'created_at')
+    list_filter = ('admin', 'created_at',)
+    search_fields = ('room_id', 'user', 'organization', 'message',)
+
+admin.site.register(ContactMessageData, ContactMessageDataAdmin)
