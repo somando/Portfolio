@@ -1,5 +1,5 @@
 from django.urls import reverse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.template import Context
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
@@ -241,6 +241,9 @@ def contactLogin(request):
             })
 
 def contactChat(request, id):
+    
+    if not ContactRoomData.objects.filter(room_id=id).exists():
+        return HttpResponse(status = 404)
     
     room = ContactRoomData.objects.get(room_id=id)
     

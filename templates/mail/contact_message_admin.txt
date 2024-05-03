@@ -5,7 +5,7 @@
 {{ message }}
 
 お問い合わせ詳細のご確認及び返信は下記URLより可能です。
-https://somando.jp/contact/{{ id }}?key={{ key }}
+https://somando.jp/contact/chat/{{ id }}?key={{ key }}
 
 ※このメッセージは自動送信メールです。返信はできませんのでご了承ください。
 

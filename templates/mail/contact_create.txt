@@ -19,7 +19,7 @@
 ・お問い合わせ内容: {{ message }}
 
 お問い合わせの詳細は下記URLより閲覧できます。
-https://somando.jp/contact/{{ id }}?key={{ key }}
+https://somando.jp/contact/chat/{{ id }}?key={{ key }}
 
 回答まで今しばらくお待ちくださいますようお願い申し上げます。
 
