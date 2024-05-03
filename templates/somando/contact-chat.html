@@ -14,7 +14,7 @@
                     <p class="detail break-span"><span>{{ name }} 様の</span><span>お問い合わせ状況</span></p>
                     <p class="detail-text break-span"><span>ルームID:</span> <span>{{ id }}</span></p>
                     <p class="detail-text break-span"><span>メールアドレス:</span> <span>{{ email }}</span></p>
-                    <p class="detail-text break-span"><span>ステータス:</span> <span>{% if room.close %}<i class="fa-regular fa-circle-check"></i> お問い合わせ中{% else %}<i class="fa-regular fa-circle-xmark"></i> クローズ済み{% endif %}</span></p>
+                    <p class="detail-text break-span"><span>ステータス:</span> <span>{% if not room.close %}<i class="fa-regular fa-circle-check"></i> お問い合わせ中{% else %}<i class="fa-regular fa-circle-xmark"></i> クローズ済み{% endif %}</span></p>
                     {% if organization %}
                         <p class="detail-text break-span"><span>組織:</span> <span>{{ organization }}</span></p>
                     {% endif %}
@@ -44,14 +44,14 @@
                     <form method="post" class="send-div">
                         {% csrf_token %}
                         <input type="hidden" name="method" value="send_message">
-                        <textarea class="chat-input" placeholder="{% if room.close %}メッセージを入力 {% if user.is_authenticated %}(運営者としてログイン中){% endif %}{% else %}このルームはすでに閉じられています。&#13;新規お問い合わせをご利用ください。{% endif %}" name="message" required {% if not room.close %}disabled{% endif %}></textarea>
+                        <textarea class="chat-input" placeholder="{% if not room.close %}メッセージを入力 {% if user.is_authenticated %}(運営者としてログイン中){% endif %}{% else %}このルームはすでに閉じられています。&#13;新規お問い合わせをご利用ください。{% endif %}" name="message" required {% if room.close %}disabled{% endif %}></textarea>
                         <button class="chat-button"><i class="fa-regular fa-paper-plane"></i></button>
                     </form>
                     {% if user.is_authenticated %}
                         <form method="post">
                             {% csrf_token %}
                             <input type="hidden" name="method" value="close_room">
-                            {% if room.close %}
+                            {% if not room.close %}
                                 <button class="chat-button-close"><i class="fa-regular fa-circle-xmark"></i></button>
                             {% else %}
                                 <button class="chat-button-open"><i class="fa-regular fa-circle-check"></i></button>
