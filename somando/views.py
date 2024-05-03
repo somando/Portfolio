@@ -243,7 +243,8 @@ def contactLogin(request):
 def contactChat(request, id):
     
     if not ContactRoomData.objects.filter(room_id=id).exists():
-        return HttpResponse(status = 404)
+        
+        return render(request, '404.html')
     
     room = ContactRoomData.objects.get(room_id=id)
     
