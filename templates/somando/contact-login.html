@@ -1,0 +1,45 @@
+{% extends "somando/layout.html" %}
+{% load static %}
+{% block title %}Contact Login{{ block.super }}{% endblock title %}
+{% block content %}
+{% autoescape off %}
+<main id="contact-main">
+    <div id="contact" class="section">
+        <h2 class="title animation-wait">Contact</h2>
+        <p class="description fade-in-bottom05 animation-wait">お問い合わせ</p>
+        <form method="post">
+            {% csrf_token %}
+            <div class="contact">
+                <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                    <p class="detail break-span"><span>ルームログイン</span></p>
+                    <p class="detail-text break-span"><span>現在、</span><span>お問い合わせ中の</span><span>ルームが</span><span>ある場合には</span><span>下記フォームより</span><span>ログインしてください。</span></p>
+                </div>
+                {% if error %}
+                    <div class="item-box fade-in-bottom05 contact-div animation-wait error-log">
+                        <p class="detail-text break-span"><span><i class="fa-regular fa-circle-xmark"></i> 認証情報が</span><span>異なっています。</span></p>
+                    </div>
+                {% endif %}
+                <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                    <p class="detail break-span"><span>ルームID</span><span class="required">*</span></p>
+                    <input type="text" class="contact-input" placeholder="Room ID" name="room_id" value="{{ id }}" required>
+                </div>
+                <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                    <p class="detail break-span"><span>認証キー</span><span class="required">*</span></p>
+                    <input type="password" class="contact-input" placeholder="Auth code" name="auth_code" required>
+                </div>
+                <div class="item-box fade-in-bottom05 contact-div animation-wait contact-button">
+                    <button class="contact-button">ログイン</button>
+                </div>
+                <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                    <p class="contact-login"><a href="{% url "somando:contact" %}">< 新規お問い合わせ</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+<script src="{% static "somando/fadein.js" %}"></script>
+<script>
+    delay_set("contact-div", 0.6, 0.2);
+</script>
+{% endautoescape %}
+{% endblock content %}

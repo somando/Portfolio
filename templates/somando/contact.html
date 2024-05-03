@@ -10,53 +10,50 @@
         <form method="post">
             {% csrf_token %}
             <div class="contact">
-                {% if open %}
-                    <div class="item-box fade-in-bottom05 contact-div animation-wait">
-                        <p class="detail break-span"><span>お問い合わせ中の</span><span>ルーム</span></p>
-                        <p class="detail-text break-span"><span>お問い合わせ中の</span><span>ルームが</span><span>見つかりました。</span></p>
-                        <p class="detail-text break-span"><span>ルームIDを</span><span>クリックすることで、</span><span>今までのメッセージの</span><span>確認や再開・返信が</span><span>可能です。</span></p>
-                        <p class="detail-text break-span"><span>ルームID:</span> <span><a href="{% url "somando:contactChat" id %}?auth={{ auth }}">{{ id }}</a></span></p>
-                        <p class="detail-text break-span"><span>登録メールアドレス:</span> <span>{{ email }}</span></p>
+                <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                    <p class="detail break-span"><span>お問い合わせ中の</span><span>ルーム</span></p>
+                        {% if open %}
+                            <p class="detail-text break-span"><span>お問い合わせ中の</span><span>ルームが</span><span>見つかりました。</span></p>
+                            <p class="detail-text break-span"><span>ルームIDを</span><span>クリックすることで、</span><span>今までのメッセージの</span><span>確認や再開・返信が</span><span>可能です。</span></p>
+                            <p class="detail-text break-span"><span>ルームID:</span> <span><a href="{% url "somando:contactChat" id %}?key={{ auth }}">{{ id }}</a></span></p>
+                            <p class="detail-text break-span"><span>登録メールアドレス:</span> <span>{{ email }}</span></p>
+                            <p class="detail-text break-span"><span>現在、</span><span>お問い合わせ中の</span><span>ルームが</span><span>異なる場合には</span><span>下記ページより</span><span>認証情報を</span><span>入力してください。</span></p>
+                        {% else %}
+                            <p class="detail-text break-span"><span>現在、</span><span>お問い合わせ中の</span><span>ルームが</span><span>ある場合には</span><span>下記ページより</span><span>認証情報を</span><span>入力してください。</span></p>
+                        {% endif %}
+                        <p class="contact-login"><a href="{% url "somando:contactLogin" %}">ルームログイン ></a></p>
                     </div>
-                    <div class="item-box fade-in-bottom05 contact-div animation-wait">
-                        <p class="detail break-span"><span>注意事項</span></p>
-                        <p class="detail-text break-span"><span>内容によりましては、</span><span>お返事まで</span><span>お時間を</span><span>頂く場合が</span><span>ございます。</span></p>
-                        <p class="detail-text break-span"><span>運営者からの</span><span>お返事は</span><span>送信者個人宛に</span><span>お送りするものです。</span><span>お返事の内容を</span><span>外部で</span><span>利用することは</span><span>禁止します。</span></p>
-                        <p class="detail-text break-span"><span>ルームが</span><span>開かれている際には</span><span>新規の</span><span>お問い合わせは</span><span>送信できません。</span></p>
-                    </div>
-                {% else %}
-                    <div class="item-box fade-in-bottom05 contact-div animation-wait">
-                        <p class="detail break-span"><span>注意事項</span></p>
-                        <p class="detail-text break-span"><span>ドメイン・</span><span>指定受信・</span><span>本文にURLのある</span><span>メールの</span><span>受信拒否等の</span><span>制限を</span><span>かけている方は</span><span>運営者からの</span><span>メールが</span><span>受信できない場合が</span><span>あります。</span></p>
-                        <p class="detail-text break-span"><span>お問い合わせには</span><span>@somando.jpの</span><span>ドメイン受信設定が</span><span>必要です。</span></p>
-                        <p class="detail-text break-span"><span>送信者が</span><span>入力した</span><span>内容は</span><span> <a href="{% url "somando:privacy-policy" %}" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a> <i class="fa-regular fa-clone"></i> に</span><span>則って</span><span>適切に</span><span>管理いたします。</span></p>
-                        <p class="detail-text break-span"><span>内容によりましては、</span><span>お返事まで</span><span>お時間を</span><span>頂く場合が</span><span>ございます。</span></p>
-                        <p class="detail-text break-span"><span>運営者からの</span><span>お返事は</span><span>送信者個人宛に</span><span>お送りするものです。</span><span>お返事の内容を</span><span>外部で</span><span>利用することは</span><span>禁止します。</span></p>
-                        <p class="detail-text break-span"><span>問い合わせ後は</span><span>自動送信された</span><span>URLより、</span><span>メッセージを</span><span>送信してください。</span></p>
-                    </div>
-                    <div class="item-box fade-in-bottom05 contact-div animation-wait">
-                        <p class="detail break-span"><span>お名前</span><span class="required">*</span></p>
-                        <input type="text" class="contact-input" placeholder="Name" autocomplete="name" name="name" required>
-                    </div>
-                    <div class="item-box fade-in-bottom05 contact-div animation-wait">
-                        <p class="detail break-span"><span>メールアドレス</span><span class="required">*</span></p>
-                        <input type="text" class="contact-input" placeholder="Email" autocomplete="email" name="email" required>
-                    </div>
-                    <div class="item-box fade-in-bottom05 contact-div animation-wait">
-                        <p class="detail break-span"><span>組織</span></p>
-                        <input type="text" class="contact-input" placeholder="Organization" name="organization" autocomplete="organization">
-                    </div>
-                    <div class="item-box fade-in-bottom05 contact-div animation-wait">
-                        <p class="detail break-span"><span>内容</span><span class="required">*</span></p>
-                        <textarea class="contact-input contact-textarea" placeholder="Details" name="details" required></textarea>
-                    </div>
-                    <div class="item-box fade-in-bottom05 contact-div animation-wait">
-                        <p class="detail-text break-span"><span>このフォームを</span><span>送信することで、</span><span> <a href="{% url "somando:privacy-policy" %}" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a> <i class="fa-regular fa-clone"></i> に</span><span>同意したものと</span><span>みなします。</span></p>
-                    </div>
-                    <div class="item-box fade-in-bottom05 contact-div animation-wait contact-button">
-                        <button class="contact-button">送信</button>
-                    </div>
-                {% endif %}
+                <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                    <p class="detail break-span"><span>注意事項</span></p>
+                    <p class="detail-text break-span"><span>ドメイン・</span><span>指定受信・</span><span>本文にURLのある</span><span>メールの</span><span>受信拒否等の</span><span>制限を</span><span>かけている方は</span><span>運営者からの</span><span>メールが</span><span>受信できない場合が</span><span>あります。</span></p>
+                    <p class="detail-text break-span"><span>お問い合わせには</span><span>@somando.jpの</span><span>ドメイン受信設定が</span><span>必要です。</span></p>
+                    <p class="detail-text break-span"><span>送信者が</span><span>入力した</span><span>内容は</span><span> <a href="{% url "somando:privacy-policy" %}" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a> <i class="fa-regular fa-clone"></i> に</span><span>則って</span><span>適切に</span><span>管理いたします。</span></p>
+                    <p class="detail-text break-span"><span>内容によりましては、</span><span>お返事まで</span><span>お時間を</span><span>頂く場合が</span><span>ございます。</span></p>
+                    <p class="detail-text break-span"><span>運営者からの</span><span>お返事は</span><span>送信者個人宛に</span><span>お送りするものです。</span><span>お返事の内容を</span><span>外部で</span><span>利用することは</span><span>禁止します。</span></p>
+                    <p class="detail-text break-span"><span>問い合わせ後は</span><span>自動送信された</span><span>URLより、</span><span>メッセージを</span><span>送信してください。</span></p>
+                </div>
+                <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                    <p class="detail break-span"><span>お名前</span><span class="required">*</span></p>
+                    <input type="text" class="contact-input" placeholder="Name" autocomplete="name" name="name" required>
+                </div>
+                <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                    <p class="detail break-span"><span>メールアドレス</span><span class="required">*</span></p>
+                    <input type="email" class="contact-input" placeholder="Email" autocomplete="email" name="email" required>
+                </div>
+                <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                    <p class="detail break-span"><span>組織</span></p>
+                    <input type="text" class="contact-input" placeholder="Organization" name="organization" autocomplete="organization">
+                </div>
+                <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                    <p class="detail break-span"><span>内容</span><span class="required">*</span></p>
+                    <textarea class="contact-input contact-textarea" placeholder="Details" name="details" required></textarea>
+                </div>
+                <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                    <p class="detail-text break-span"><span>このフォームを</span><span>送信することで、</span><span> <a href="{% url "somando:privacy-policy" %}" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a> <i class="fa-regular fa-clone"></i> に</span><span>同意したものと</span><span>みなします。</span></p>
+                </div>
+                <div class="item-box fade-in-bottom05 contact-div animation-wait contact-button">
+                    <button class="contact-button">送信</button>
+                </div>
             </div>
         </form>
     </div>

@@ -1,5 +1,8 @@
-from django.shortcuts import render
-from django.core.mail import send_mail
+from django.urls import reverse
+from django.shortcuts import render, redirect
+from django.template import Context
+from django.template.loader import get_template
+from django.core.mail import EmailMultiAlternatives
 from .models import *
 import random, string
 
@@ -167,6 +170,7 @@ def contact(request):
             room_id = room_id,
             auth_code = auth_code,
             email = email,
+            close = False,
         )
         
         ContactMessageData.objects.create(
@@ -179,10 +183,17 @@ def contact(request):
         
         subject = 'お問い合わせを受け付けました｜Soma Ando'
         
-        message = name + email + organization + details
-        
-        send_mail(subject, message, 'no-reply@somando.jp', [email])
-        send_mail(subject, message, 'no-reply@somando.jp', ['info@somando.jp'])
+        context = {
+            'name': name, 
+            'email': email, 
+            'organization': organization, 
+            'message': details, 
+            'id': room_id, 
+            'key': auth_code,
+        }
+        txt_content = get_template('mail/contact_create.txt').render(context)
+        mail = EmailMultiAlternatives(subject=subject, body=txt_content, from_email='no-reply@somando.jp', to=[email], bcc=['info@somando.jp'])
+        mail.send()
         
         response = render(request, 'somando/submitted.html', {
             'auth': auth_code,
@@ -194,10 +205,151 @@ def contact(request):
         
         return response
 
+def contactLogin(request):
+    
+    if request.method == "GET":
+        
+        if 'id' in request.GET:
+            room_id = request.GET['id']
+        else:
+            room_id = ''
+        
+        return render(request, 'somando/contact-login.html', {
+            'id': room_id,
+            'error': False,
+        })
+    
+    elif request.method == "POST":
+        
+        room_id = request.POST['room_id']
+        auth_code = request.POST['auth_code']
+        
+        if ContactRoomData.objects.filter(room_id=room_id, auth_code=auth_code).exists():
+            
+            url = reverse('somando:contactChat', kwargs={'id': room_id})
+            response = redirect(url + '?key=' + auth_code)
+            response.set_cookie('contact_room_id', room_id)
+            response.set_cookie('contact_room_auth', auth_code)
+            
+            return response
+        
+        else:
+            
+            return render(request, 'somando/contact-login.html', {
+                'id': room_id,
+                'error': True,
+            })
+
 def contactChat(request, id):
-    return render(request, 'somando/contact-chat.html', {
-        'id': id,
-    })
+    
+    room = ContactRoomData.objects.get(room_id=id)
+    
+    room_auth_code = room.auth_code
+    
+    if request.method == "GET":
+        
+        if 'key' in request.GET:
+            
+            auth_code = request.GET['key']
+            
+            if room.auth_code == auth_code:
+                
+                messages = ContactMessageData.objects.filter(room_id=id).order_by('created_at')
+                
+                for message in messages:
+                    message.message = message.message.replace('\n', "</span><br><span>")
+                
+                response = render(request, 'somando/contact-chat.html', {
+                    'name': messages[0].user,
+                    'id': room.room_id,
+                    'email': room.email,
+                    'close': room.close,
+                    'room': room,
+                    'messages': messages,
+                })
+                
+                response.set_cookie('contact_room_id', id)
+                response.set_cookie('contact_room_auth', auth_code)
+                
+                return response
+        
+        else:
+            
+            url = reverse('somando:contactLogin')
+            response = redirect(url + '?id=' + id)
+            
+            return response
+    
+    elif request.method == "POST":
+        
+        if request.POST['method'] == 'send_message':
+            
+            message = request.POST['message']
+            
+            past_messages = ContactMessageData.objects.filter(room_id=id).order_by('created_at').first()
+            
+            room = ContactRoomData.objects.get(room_id=id)
+            
+            room_auth_code = room.auth_code
+            
+            if request.user.is_authenticated:
+                
+                subject = '担当者からの返信がありました｜Soma Ando'
+                
+                email = room.email
+                
+                context = {
+                    'name': past_messages.user, 
+                    'message': message, 
+                    'id': room.room_id, 
+                    'key': room_auth_code,
+                }
+                txt_content = get_template('mail/contact_message.txt').render(context)
+                mail = EmailMultiAlternatives(subject=subject, body=txt_content, from_email='no-reply@somando.jp', to=[email], bcc=['info@somando.jp'])
+                mail.send()
+                
+                ContactMessageData.objects.create(
+                    room_id = id,
+                    user = '安戸 蒼真',
+                    organization = '',
+                    admin = True,
+                    message = message,
+                )
+            
+            else:
+                
+                subject = '質問者からの返信がありました｜Soma Ando'
+                
+                email = room.email
+                
+                context = {
+                    'name': past_messages.user, 
+                    'message': message, 
+                    'id': room.room_id, 
+                    'key': room.auth_code,
+                }
+                txt_content = get_template('mail/contact_message_admin.txt').render(context)
+                mail = EmailMultiAlternatives(subject=subject, body=txt_content, from_email='no-reply@somando.jp', to=['info@somando.jp'])
+                mail.send()
+                
+                ContactMessageData.objects.create(
+                    room_id = id,
+                    user = past_messages.user,
+                    organization = past_messages.organization,
+                    admin = False,
+                    message = message,
+                )
+        
+        elif request.POST['method'] == 'close_room':
+            
+            room = ContactRoomData.objects.get(room_id=id)
+            
+            room.close = not room.close
+            
+            room.save()
+
+        url = reverse('somando:contactChat', kwargs={'id': id})
+        return redirect(url + '?key=' + room_auth_code)
 
 def termsOfUse(request):
     

@@ -36,8 +36,8 @@ class SkillDataAdmin(admin.ModelAdmin):
 admin.site.register(SkillData, SkillDataAdmin)
 
 class ContactRoomDataAdmin(admin.ModelAdmin):
-    list_display = ('room_id', 'auth_code', 'email', 'progress', 'close')
-    list_filter = ('progress', 'close',)
+    list_display = ('room_id', 'auth_code', 'email', 'close')
+    list_filter = ('close',)
     search_fields = ('room_id', 'email',)
 
 admin.site.register(ContactRoomData, ContactRoomDataAdmin)

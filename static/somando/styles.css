@@ -21,19 +21,110 @@ footer {
     margin-bottom: 0;
 }
 
-.experience, .products, .contact, .privacy-policy, .terms-of-use {
+.experience, .products, .contact, .privacy-policy, .terms-of-use, .mail, .chat {
     margin: 50px 0;
 }
 
-.experience .item-box, .privacy-policy .item-box, .terms-of-use .item-box, .contact .item-box {
+.experience .item-box, .privacy-policy .item-box, .terms-of-use .item-box, .contact .item-box, .mail .item-box, .chat .item-box {
     margin: 45px 0;
 }
 
-#experience-main, #contact-main, #privacy-policy-main, #terms-of-use-main {
+#experience-main, #contact-main, #privacy-policy-main, #terms-of-use-main, #mail-main {
     width: fit-content;
     max-width: min(600px, 86%);
     min-width: min(400px, 86%);
     margin: auto;
+}
+
+.bubble-parent {
+    width: 100%;
+}
+
+.message-info {
+    font-size: 13px;
+}
+
+#chat-main {
+    width: min(600px, 86%);
+    margin: auto;
+}
+
+.message-detail {
+    border: gray 1px solid;
+    width: fit-content;
+    height: fit-content;
+    max-width: 80%;
+    padding: 10px 15px;
+    text-align: right;
+    font-size: 15px;
+    border-radius: 0 25px 25px 25px;
+}
+
+.message-detail p {
+    margin: 0;
+    display: inline-block;
+    max-width: 100%;
+    height: fit-content;
+    overflow-wrap: break-word;
+    text-align: left;
+}
+
+.message-detail-right {
+    background-color: rgb(200, 241, 255);
+}
+
+.message-right {
+    text-align: right;
+    margin-left: auto;
+    border-radius: 25px 0 25px 25px;
+}
+
+.chat-input {
+    width: 80%;
+    height: 100px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: gray 1px solid;
+    resize: none;
+    font-size: 16px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.chat-button {
+    width: 13%;
+    height: 122px;
+    border-radius: 20px;
+    background-color: darkblue;
+    color: white;
+    vertical-align: top;
+    border: gray 1px solid;
+    font-size: 15px;
+}
+
+.chat-button-close, .chat-button-open {
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    margin-top: 10px;
+    border: gray 1px solid;
+}
+
+.chat-button-close::after, .chat-button-open::after {
+    margin-left: 10px;
+    letter-spacing: 5px;
+}
+
+.chat-button-close::after {
+    content: "ルームを閉じる";
+}
+
+.chat-button-open::after {
+    content: "ルームを再度開く";
+}
+
+.send-div {
+    display: inline-block;
 }
 
 .products .item-box {
@@ -437,6 +528,21 @@ footer .text {
     font-size: 13px;
 }
 
+.error-log {
+    background-color: rgb(255, 220, 220);
+    padding: 20px;
+    margin: 20px;
+}
+
+.error-log .detail-text {
+    color: red;
+}
+
+textarea {
+    letter-spacing: 2px;
+    line-height: 25px;
+}
+
 @keyframes fadeInLeft {
     0% {
         transform: translateX(-30px);
@@ -512,7 +618,7 @@ footer .text {
         color: gray;
     }
 
-    footer, .contact-button button {
+    footer, .contact-button button, .chat-button {
         background-color: rgb(0, 0, 80);
     }
 
@@ -547,6 +653,14 @@ footer .text {
     .item-box .detail-text mark {
         background: linear-gradient(transparent 40%, rgb(130, 130, 0) 80%);
         color: white;
+    }
+
+    .error-log {
+        background-color: rgb(135, 100, 100);
+    }
+
+    .message-detail-right {
+        background-color: rgb(0, 0, 80);
     }
 }
 
@@ -620,5 +734,26 @@ footer .text {
     footer .detail-table {
         width: fit-content;
         margin: 30px 20px;
+    }
+
+    .chat-input {
+        width: 90%;
+    }
+    
+    .chat-button {
+        width: 100%;
+        height: 50px;
+        border-radius: 25px;
+        margin-top: 10px;
+    }
+
+    .chat-button::after {
+        margin-left: 10px;
+        letter-spacing: 5px;
+        content: "送信";
+    }
+    
+    .send-div {
+        display: block;
     }
 }

@@ -25,7 +25,8 @@ urlpatterns = [
     path('products', views.products, name='products'),
     path('product/<slug:url>', views.product, name='product'),
     path('contact/', views.contact, name='contact'),
-    path('contact/<slug:id>', views.contactChat, name='contactChat'),
+    path('contact/login', views.contactLogin, name='contactLogin'),
+    path('contact/chat/<slug:id>', views.contactChat, name='contactChat'),
     path('privacy-policy/', views.privacyPolicy, name='privacy-policy'),
     path('terms-of-use/', views.termsOfUse, name='terms-of-use'),
 ]
