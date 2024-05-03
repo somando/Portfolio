@@ -18,7 +18,7 @@
             </div>
             <div class="item-box fade-in-bottom05 contact-div animation-wait">
                 <p class="detail break-span"><span>お問い合わせ中の</span><span>ルーム</span></p>
-                <p class="detail-text break-span"><span>ルームID:</span> <span><a href="{% url "somando:contactChat" id %}?auth={{ auth }}">{{ id }}</a></span></p>
+                <p class="detail-text break-span"><span>ルームID:</span> <span><a href="{% url "somando:contactChat" id %}?key={{ auth }}">{{ id }}</a></span></p>
                 <p class="detail-text break-span"><span>登録メールアドレス:</span> <span>{{ email }}</span></p>
             </div>
         </div>
