@@ -110,6 +110,7 @@ footer {
     margin-top: 10px;
     color: black;
     border: gray 1px solid;
+    font-size: 15px;
 }
 
 .chat-button-close::after, .chat-button-open::after {
