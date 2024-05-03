@@ -41,7 +41,7 @@ footer {
 }
 
 .message-info {
-    font-size: 13px;
+    font-size: 11px;
 }
 
 #chat-main {
@@ -67,6 +67,7 @@ footer {
     height: fit-content;
     overflow-wrap: break-word;
     text-align: left;
+    font-size: 13px;
 }
 
 .message-detail-right {
