@@ -466,8 +466,11 @@ a:hover {
     margin-bottom: 20px;
 }
 
-.contact-button button:hover {
+.contact-button button:hover, .chat-button:hover {
     background-color: gray;
+}
+
+button, button:hover {
     transition-duration: 0.2s;
     cursor: pointer;
 }
