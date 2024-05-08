@@ -1,6 +1,12 @@
 {% extends "somando/layout.html" %}
 {% load static %}
 {% block title %}{{ product.title }}{{ block.super }}{% endblock title %}
+{% block meta %}
+    <meta type="og:type" content="website">
+    <meta type="og:url" content="{{ url }}{% url 'somando:product' product.url %}">
+    <meta type="og:description" content="{{ description }}">
+    <meta type="og:image" content="{{ product.image }}">
+{% endblock meta %}
 {% block content %}
 {% autoescape off %}
 <main id="products-main">

@@ -1,6 +1,12 @@
 {% extends "somando/layout.html" %}
 {% load static %}
 {% block title %}Experiences{{ block.super }}{% endblock title %}
+{% block meta %}
+    <meta type="og:type" content="website">
+    <meta type="og:url" content="{{ url }}{% url 'somando:experiences' %}">
+    <meta type="og:description" content="今までに経歴をまとめています。">
+    <meta type="og:image" content="{{ static_profile.icon }}">
+{% endblock meta %}
 {% block content %}
 {% autoescape off %}
 <main id="experience-main">

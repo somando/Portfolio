@@ -1,6 +1,13 @@
 {% extends "somando/layout.html" %}
 {% load static %}
 {% block title %}Contact Chat{{ block.super }}{% endblock title %}
+{% block meta %}
+    <meta type="og:type" content="website">
+    <meta type="og:url" content="{{ url }}{% url 'somando:contactChat' %}">
+    <meta type="og:description" content="{{ name }}様のお問い合わせルームです。このリンクは共有しないでください。">
+    <meta type="og:image" content="{{ static_profile.icon }}">
+    <meta type="robots" content="noindex">
+{% endblock meta %}
 {% block content %}
 {% autoescape off %}
 <main id="chat-main">

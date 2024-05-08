@@ -1,6 +1,12 @@
 {% extends "somando/layout.html" %}
 {% load static %}
 {% block title %}Soma Ando's Portfolio{% endblock title %}
+{% block meta %}
+    <meta type="og:type" content="website">
+    <meta type="og:url" content="{{ url }}{% url 'somando:top' %}">
+    <meta type="og:description" content="高等専門学校に在学している安戸蒼真のポートフォリオサイトです。ハッカソンにもよく参加しています。">
+    <meta type="og:image" content="{{ static_profile.icon }}">
+{% endblock meta %}
 {% block content %}
 {% autoescape off %}
     <div id="fill-image-parent"><img id="fill-image" src="{{ static_profile.icon }}" /></div>

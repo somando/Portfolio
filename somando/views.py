@@ -110,11 +110,13 @@ def product(request, url):
     product.team = product.team.replace('\span', "</span><span>")
     product.prize = product.prize.replace('\span', "</span><span>")
     product.link_title = product.link_title.replace('\span', "</span><span>")
+    description = product.about.replace('/n', '').replace('\span', "")
     product.about = product.about.replace('\n', "</span><br><span>").replace('\span', "</span><span>")
     product.detail = product.detail.replace('\n', "</span></span><br><span class='br'><span>").replace('\span', "</span><span>")
     
     return render(request, 'somando/product.html', {
         'product': product,
+        'description': description,
     })
 
 def randomname(n):
