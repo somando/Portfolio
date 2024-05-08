@@ -328,9 +328,12 @@ a img:hover {
 
 .item-box .detail-text {
     margin: 10px 0;
-    color: gray;
     font-size: 13px;
     line-height: 25px;
+}
+
+.detail-text-rule {
+    color: gray;
 }
 
 .large {
