@@ -1,6 +1,9 @@
 {% extends "somando/layout.html" %}
 {% load static %}
 {% block title %}500 Server Error{{ block.super }}{% endblock title %}
+{% block meta %}
+    <meta type="robots" content="noindex">
+{% endblock meta %}
 {% block content %}
 {% autoescape off %}
 <main>

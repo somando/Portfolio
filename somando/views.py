@@ -87,7 +87,7 @@ def products(request):
 def product(request, url):
     
     if (ProductsData.objects.filter(url=url).count() == 0):
-        return render(request, '404.html')
+        return render(request, '404.html', status=404)
     
     product = ProductsData.objects.get(url=url)
     
@@ -246,7 +246,7 @@ def contactChat(request, id):
     
     if not ContactRoomData.objects.filter(room_id=id).exists():
         
-        return render(request, '404.html')
+        return render(request, '404.html', status=404)
     
     room = ContactRoomData.objects.get(room_id=id)
     
