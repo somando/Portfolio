@@ -29,4 +29,10 @@ urlpatterns = [
     path('contact/chat/<slug:id>', views.contactChat, name='contactChat'),
     path('privacy-policy', views.privacyPolicy, name='privacy-policy'),
     path('terms-of-use', views.termsOfUse, name='terms-of-use'),
+    
+    # redirect
+    path('product/<slug:url>', views.productRedirect),
+    path('contact/', views.noUseSlash),
+    path('privacy-policy/', views.noUseSlash),
+    path('terms-of-use/', views.noUseSlash),
 ]
