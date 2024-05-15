@@ -265,8 +265,11 @@ def contactChat(request, id):
                 for message in messages:
                     message.message = message.message.replace('\n', "</span><br><span>")
                 
+                organization = messages[0].organization
+                
                 response = render(request, 'somando/contact-chat.html', {
                     'name': messages[0].user,
+                    'organization': organization,
                     'id': room.room_id,
                     'email': room.email,
                     'close': room.close,
