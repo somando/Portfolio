@@ -4,7 +4,7 @@
 {% block meta %}
     <meta type="og:type" content="website">
     <meta type="og:title" content="Contact Chat｜Soma Ando's Portfolio">
-    <meta type="og:url" content="{{ url }}{% url 'somando:contactChat' %}">
+    <meta type="og:url" content="{{ url }}{% url 'somando:contactChat' room.room_id %}">
     <meta type="og:description" content="{{ name }}様のお問い合わせルームです。このリンクは共有しないでください。">
     <meta type="og:image" content="{{ static_profile.icon }}">
     <meta type="robots" content="noindex">
