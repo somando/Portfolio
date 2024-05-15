@@ -369,13 +369,6 @@ def privacyPolicy(request):
     return render(request, 'somando/privacy-policy.html')
 
 
-def noUseSlash(request):
-    
-    url = request.path
-    url = url[:-1]
-    
-    return redirect(url, permanent=True)
-
 def productRedirect(request, url):
     
     return redirect('somando:product', url=url, permanent=True)

@@ -32,7 +32,4 @@ urlpatterns = [
     
     # redirect
     path('product/<slug:url>', views.productRedirect),
-    path('contact/', views.noUseSlash),
-    path('privacy-policy/', views.noUseSlash),
-    path('terms-of-use/', views.noUseSlash),
 ]
