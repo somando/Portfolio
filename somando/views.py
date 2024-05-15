@@ -240,7 +240,7 @@ def contactLogin(request):
             return render(request, 'somando/contact-login.html', {
                 'id': room_id,
                 'error': True,
-            })
+            }, status=401)
 
 def contactChat(request, id):
     
@@ -285,7 +285,7 @@ def contactChat(request, id):
         else:
             
             url = reverse('somando:contactLogin')
-            response = redirect(url + '?id=' + id)
+            response = redirect(url + '?id=' + id, status=400)
             
             return response
     
