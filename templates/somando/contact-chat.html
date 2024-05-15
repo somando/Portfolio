@@ -25,7 +25,7 @@
                     {% if organization %}
                         <p class="detail-text break-span"><span>組織:</span> <span>{{ organization }}</span></p>
                     {% endif %}
-                    <p class="detail-text break-span"><span>ステータス:</span> <span>{% if not room.close %}<i class="fa-regular fa-circle-check green"></i> お問い合わせ中{% else %}<i class="fa-regular fa-circle-xmark"></i> クローズ済み{% endif %}</span></p>
+                    <p class="detail-text break-span"><span>ステータス:</span> <span>{% if not room.close %}<i class="fa-regular fa-circle-check"></i> お問い合わせ中{% else %}<i class="fa-regular fa-circle-xmark"></i> クローズ済み{% endif %}</span></p>
                 </div>
                 {% for message in messages %}
                     {% if message.admin %}
