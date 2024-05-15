@@ -12,8 +12,8 @@
 
 また、お問い合わせ内容のご確認です。
 ・お名前: {{ name }}
-・メールアドレス: {{ email }}
-{% if organization %}・組織: {{ organization }}{% endif %}
+・メールアドレス: {{ email }}{% if organization %}
+・組織: {{ organization }}{% endif %}
 ・お問い合わせ内容: {{ message }}
 
 お問い合わせの詳細は下記URLより閲覧できます。
