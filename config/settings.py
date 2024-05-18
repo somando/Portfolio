@@ -22,6 +22,7 @@ import os
 
 INSTALLED_APPS = [
     'somando',
+    'api',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
