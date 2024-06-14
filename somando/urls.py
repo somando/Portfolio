@@ -32,6 +32,4 @@ urlpatterns = [
     
     # redirect
     path('product/<slug:url>', views.productRedirect),
-    
-    path('api', include('somando.urlsAPI')),
 ]
