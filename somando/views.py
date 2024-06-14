@@ -1,6 +1,5 @@
 from django.urls import reverse
-from django.shortcuts import render, redirect, HttpResponse
-from django.template import Context
+from django.shortcuts import render, redirect
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from .models import *
