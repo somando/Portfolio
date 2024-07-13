@@ -53,6 +53,17 @@
                     {% endfor %}
                     </div>
                 {% endif %}
+                {% if product.collaborators %}
+                    <p><b class="large">共同製作者</b></p>
+                    <div class="collaborators">
+                    {% for collaborator in product.collaborators %}
+                        <div class="collaborator">
+                            <p class="collaborator-name">{{ collaborator.0 }}</p>
+                            <p class="collaborator-github"><a href="https://github.com/{{ collaborator.1 }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a></p>
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% endif %}
                 {% if product.github %}
                     <p class="link-product"><a href="{{ product.github }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a> <i class="fa-regular fa-clone"></i></p>
                 {% endif %}

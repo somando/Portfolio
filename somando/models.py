@@ -34,6 +34,7 @@ class ProductsData(models.Model):
     detail = models.TextField(blank=True)
     technology = models.TextField(blank=True)
     infrastracture = models.TextField(blank=True)
+    collaborators = models.TextField(blank=True)
     show_top = models.BooleanField(default=False)
     link_title = models.CharField(max_length=100, blank=True)
     link_url = models.URLField(blank=True)

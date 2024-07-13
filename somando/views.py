@@ -104,6 +104,12 @@ def product(request, url):
         for infrastructure in infrastracture_list:
             infrastructure = infrastructure.split(' \ ')
             product.infrastracture.append(infrastructure)
+    if product.collaborators != '':
+        collaborator_list = product.collaborators.split('\n')
+        product.collaborators = []
+        for collaborator in collaborator_list:
+            collaborator = collaborator.split(' \ ')
+            product.collaborators.append(collaborator)
     product.title = product.title.replace('\span', "</span><span>")
     product.event = product.event.replace('\span', "</span><span>")
     product.team = product.team.replace('\span', "</span><span>")
