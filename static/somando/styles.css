@@ -181,7 +181,7 @@ a img:hover {
 .products .collaborators .collaborator {
     width: 100%;
     display: flex;
-    margin: 20px 0;
+    margin-top: 10px;
 }
 
 .products .collaborators .collaborator .collaborator-name {
@@ -749,6 +749,10 @@ textarea {
     .products .collaborators .collaborator .collaborator-name {
         width: 100%;
         margin: 0 10px 0 0;
+    }
+
+    .products .collaborators .collaborator .collaborator-github a {
+        vertical-align: middle;
     }
 
     #profile #icon {
