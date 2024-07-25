@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class StaticProfileData(models.Model):
+    display_image = models.URLField()
     icon = models.URLField()
     name_en = models.CharField(max_length=100)
     name_ja = models.CharField(max_length=100)
@@ -12,6 +13,7 @@ class ProfileData(models.Model):
     fontawesome = models.CharField(max_length=100)
     detail = models.CharField(max_length=100)
     url = models.CharField(max_length=100, blank=True)
+    draft = models.BooleanField(default=False)
 
 class ExperienceData(models.Model):
     date = models.DateField()
@@ -20,6 +22,7 @@ class ExperienceData(models.Model):
     show_top = models.BooleanField(default=False)
     link_title = models.CharField(max_length=100, blank=True)
     link_url = models.URLField(blank=True)
+    draft = models.BooleanField(default=False)
 
 class ProductsData(models.Model):
     title = models.CharField(max_length=100)
@@ -38,6 +41,7 @@ class ProductsData(models.Model):
     show_top = models.BooleanField(default=False)
     link_title = models.CharField(max_length=100, blank=True)
     link_url = models.URLField(blank=True)
+    draft = models.BooleanField(default=False)
 
 class SkillData(models.Model):
     title = models.CharField(max_length=100)

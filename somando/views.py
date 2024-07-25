@@ -1,5 +1,6 @@
 from django.urls import reverse
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from .models import *
@@ -11,17 +12,17 @@ def top(request):
     static_profile = StaticProfileData.objects.first()
     static_profile.description = static_profile.description.replace('\span', "</span><span>")
     
-    profiles = ProfileData.objects.all()
+    profiles = ProfileData.objects.filter(draft=False)
     for profile in profiles:
         profile.detail = profile.detail.replace('\span', "</span><span>")
     
-    experiences = ExperienceData.objects.all().order_by('date').filter(show_top=True)
+    experiences = ExperienceData.objects.all().order_by('date').filter(show_top=True).filter(draft=False)
     for experience in experiences:
         date_list = str(experience.date).split('-')
         experience.date = date_list[0] + '/' + date_list[1]
         experience.title = experience.title.replace('\span', "</span><span>")
     
-    products = ProductsData.objects.all().order_by('-date').filter(show_top=True)
+    products = ProductsData.objects.all().order_by('-date').filter(show_top=True).filter(draft=False)
     for product in products:
         product.title = product.title.replace('\span', "</span><span>")
         product.event = product.event.replace('\span', "</span><span>")
@@ -42,7 +43,7 @@ def top(request):
 
 def experiences(request):
     
-    experiences = ExperienceData.objects.all().order_by('date')
+    experiences = ExperienceData.objects.all().order_by('date').filter(draft=False)
     for experience in experiences:
         date_list = str(experience.date).split('-')
         experience.date = date_list[0] + '/' + date_list[1]
@@ -56,7 +57,7 @@ def experiences(request):
 
 def products(request):
     
-    products = ProductsData.objects.all().order_by('-date')
+    products = ProductsData.objects.all().order_by('-date').filter(draft=False)
     for product in products:
         date_list = str(product.date).split('-')
         product.date = date_list[0] + '/' + date_list[1]
@@ -83,10 +84,8 @@ def products(request):
         'products': products,
     })
 
+
 def product(request, url):
-    
-    if (ProductsData.objects.filter(url=url).count() == 0):
-        return render(request, '404.html', status=404)
     
     product = ProductsData.objects.get(url=url)
     
@@ -119,10 +118,35 @@ def product(request, url):
     product.about = product.about.replace('\n', "</span><br><span>").replace('\span', "</span><span>")
     product.detail = product.detail.replace('\n', "</span></span><br><span class='br'><span>").replace('\span', "</span><span>")
     
+    return product, description
+
+
+def productPublic(request, url):
+    
+    if (ProductsData.objects.filter(url=url).filter(draft=False).count() == 0):
+        return render(request, '404.html', status=404)
+    
+    product_data, description = product(request, url)
+    
     return render(request, 'somando/product.html', {
-        'product': product,
+        'product': product_data,
         'description': description,
     })
+
+
+@login_required
+def productDraft(request, url):
+    
+    if (ProductsData.objects.filter(url=url).count() == 0):
+        return render(request, '404.html', status=404)
+    
+    product_data, description = product(request, url)
+    
+    return render(request, 'somando/product.html', {
+        'product': product_data,
+        'description': description,
+    })
+
 
 def randomname(n):
     return ''.join(random.choices(string.ascii_letters + string.digits, k=n))
