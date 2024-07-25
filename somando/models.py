@@ -31,7 +31,7 @@ class ProductsData(models.Model):
     date = models.DateField()
     team = models.CharField(max_length=100, blank=True)
     prize = models.CharField(max_length=100, blank=True)
-    github = models.URLField(blank=True)
+    github = models.TextField(blank=True)
     image = models.URLField(blank=True)
     about = models.TextField(blank=True)
     detail = models.TextField(blank=True)
@@ -39,8 +39,7 @@ class ProductsData(models.Model):
     infrastracture = models.TextField(blank=True)
     collaborators = models.TextField(blank=True)
     show_top = models.BooleanField(default=False)
-    link_title = models.CharField(max_length=100, blank=True)
-    link_url = models.URLField(blank=True)
+    link = models.TextField(blank=True)
     draft = models.BooleanField(default=False)
 
 class SkillData(models.Model):

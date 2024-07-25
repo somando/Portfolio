@@ -23,9 +23,9 @@ class ExperienceDataAdmin(admin.ModelAdmin):
 admin.site.register(ExperienceData, ExperienceDataAdmin)
 
 class ProductsDataAdmin(admin.ModelAdmin):
-    list_display = ('title', 'event', 'date', 'team', 'prize', 'github', 'image', 'show_top', 'link_title', 'link_url')
+    list_display = ('title', 'event', 'date', 'team', 'prize', 'github', 'image', 'show_top', 'link')
     list_filter = ('show_top', 'date',)
-    search_fields = ('title', 'event', 'team', 'prize', 'link_title',)
+    search_fields = ('title', 'event', 'team', 'prize',)
 
 admin.site.register(ProductsData, ProductsDataAdmin)
 
