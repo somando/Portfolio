@@ -22,8 +22,10 @@
                     {% if experience.detail %}
                         <p class="detail-text break-span"><span>{{ experience.detail }}</span></p>
                     {% endif %}
-                    {% if experience.link_url %}
-                        <p class="link"><a href="{{ experience.link_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> {{ experience.link_title }}</a> <i class="fa-regular fa-clone"></i></p>
+                    {% if experience.link %}
+                        {% for link in experience.link %}
+                            <p class="link"><a href="{{ link.1 }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> {{ link.0 }}</a> <i class="fa-regular fa-clone"></i></p>
+                        {% endfor %}
                     {% endif %}
                 </div>
             {% endfor %}

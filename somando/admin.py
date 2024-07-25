@@ -16,9 +16,9 @@ class ProfileDataAdmin(admin.ModelAdmin):
 admin.site.register(ProfileData, ProfileDataAdmin)
 
 class ExperienceDataAdmin(admin.ModelAdmin):
-    list_display = ('date', 'title', 'detail', 'show_top', 'link_title', 'link_url')
+    list_display = ('date', 'title', 'detail', 'show_top', 'link')
     list_filter = ('show_top', 'date',)
-    search_fields = ('title', 'detail', 'link_title',)
+    search_fields = ('title', 'detail', 'link')
 
 admin.site.register(ExperienceData, ExperienceDataAdmin)
 

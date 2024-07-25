@@ -65,6 +65,7 @@ def experiences(request):
         experience.date = date_list[0] + '/' + date_list[1]
         experience.title = experience.title.replace('\span', "</span><span>")
         experience.detail = experience.detail.replace('\n', "</span><br><span>").replace('\span', "</span><span>")
+        experience.link = splitSlash(experience.link)
     
     return render(request, 'somando/experiences.html', {
         'experiences': experiences,
