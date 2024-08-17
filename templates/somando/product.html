@@ -7,6 +7,7 @@
     <meta type="og:url" content="{{ url }}{% url 'somando:product' product.url %}">
     <meta type="og:description" content="{{ description }}">
     <meta type="og:image" content="{{ product.image }}">
+    {% if preview %}<meta name="robots" content="noindex">{% endif %}
 {% endblock meta %}
 {% block content %}
 {% autoescape off %}

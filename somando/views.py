@@ -125,6 +125,7 @@ def productPublic(request, url):
     return render(request, 'somando/product.html', {
         'product': product_data,
         'description': description,
+        'preview': False
     })
 
 
@@ -143,6 +144,7 @@ def productDraft(request, url):
     return render(request, 'somando/product.html', {
         'product': product_data,
         'description': description,
+        'preview': True
     })
 
 
