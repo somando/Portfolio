@@ -128,11 +128,15 @@ def productPublic(request, url):
     })
 
 
-@login_required
 def productDraft(request, url):
     
-    if (ProductsData.objects.filter(url=url).count() == 0):
+    product_data = ProductsData.objects.filter(url=url)
+    
+    if (product_data.count() == 0):
         return render(request, '404.html', status=404)
+    
+    if (product_data.first().draft == False):
+        return redirect('somando:product', url=url, permanent=True)
     
     product_data, description = product(request, url)
     
