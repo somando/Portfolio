@@ -30,16 +30,6 @@
                     {% if product.about %}
                         <p class="detail-text break-span product-detail-list"><span>{{ product.about }}</span></p>
                     {% endif %}
-                    {% if product.github %}
-                        {% for github in product.github %}
-                            <p class="link-product"><a href="{{ github.0 }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> {% if github.1 %}{{ github.1 }}｜{% endif %}GitHub</a> <i class="fa-regular fa-clone"></i></p>
-                        {% endfor %}
-                    {% endif %}
-                    {% if product.link %}
-                        {% for link in product.link %}
-                            <p class="link-product"><a href="{{ link.1 }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-globe"></i> {{ link.0 }}</a> <i class="fa-regular fa-clone"></i></p>
-                        {% endfor %}
-                    {% endif %}
                 </div>
             {% endfor %}
         </div>
