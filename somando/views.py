@@ -38,6 +38,8 @@ def top(request):
     
     products = ProductsData.objects.all().order_by('-date').filter(show_top=True).filter(draft=False)
     for product in products:
+        date_list = str(product.date).split('-')
+        product.date = date_list[0] + '/' + date_list[1]
         product.github = splitSlash(product.github)
         product.title = product.title.replace('\span', "</span><span>")
         product.event = product.event.replace('\span', "</span><span>")
