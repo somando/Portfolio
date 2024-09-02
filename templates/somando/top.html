@@ -57,7 +57,7 @@
                     <div class="item-box fade-in-bottom05 product-div animation-wait">
                         <div class="image"><a href="{% url "somando:product" product.url %}"><img src="{{ product.image }}" /></a></div>
                         <p class="detail break-span"><a href="{% url "somando:product" product.url %}"><span>{{ product.title }}</span></a></p>
-                        <p class="event break-span"><span>{{ product.event }}</span>{% if product.team %} / <span>{{ product.team }}</span>{% endif %}</p>
+                        <p class="event break-span"><span>{{ product.date }} {{ product.event }}</span>{% if product.team %} / <span>{{ product.team }}</span>{% endif %}</p>
                         {% if product.prize %}
                             <p class="prize break-span"><span>{{ product.prize }}</span></p>
                         {% endif %}
