@@ -1,6 +1,6 @@
 {% extends "somando/layout.html" %}
 {% load static %}
-{% block title %}400 Bad Request{{ block.super }}{% endblock title %}
+{% block title %}401 Unauthorized{{ block.super }}{% endblock title %}
 {% block meta %}
     <meta type="robots" content="noindex">
 {% endblock meta %}
@@ -8,9 +8,9 @@
 {% autoescape off %}
 <main>
     <div id="product" class="section">
-        <h1 class="title" style="font-size: 100px">400</h1>
-        <h2 class="title" style="font-size: 35px">Bad Request</h2>
-        <p class="description fade-in-bottom05 break-span" style="margin-top: 50px"><span>リクエストが</span><span>何らかの原因で</span><span>処理を完了できませんでした。</span></p>
+        <h1 class="title" style="font-size: 100px">401</h1>
+        <h2 class="title" style="font-size: 35px">Unauthorized</h2>
+        <p class="description fade-in-bottom05 break-span" style="margin-top: 50px"><span>リクエストを</span><span>処理するには</span><span>認証が必要です。</span></p>
         <p class="description fade-in-bottom05 break-span" style="margin-top: 20px"><span>画面下部メニューまたは</span><span>URLをご確認ください。</span></p>
     </div>
 </main>

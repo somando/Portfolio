@@ -119,7 +119,9 @@ def product(request, url):
 
 def productPublic(request, url):
     
-    if (ProductsData.objects.filter(url=url).filter(draft=False).count() == 0):
+    print("C")
+    
+    if (not ProductsData.objects.filter(url=url).filter(draft=False).exists()):
         return render(request, '404.html', status=404)
     
     product_data, description = product(request, url)
@@ -135,19 +137,27 @@ def productDraft(request, url):
     
     product_data = ProductsData.objects.filter(url=url)
     
-    if (product_data.count() == 0):
+    if not product_data.exists():
+        print("A")
         return render(request, '404.html', status=404)
     
-    if (product_data.first().draft == False):
-        return redirect('somando:product', url=url, permanent=True)
+    if not product_data.first().draft:
+        print("B")
+        return redirect('somando:product', url=url, permanent=False)
     
-    product_data, description = product(request, url)
+    if request.user.is_authenticated:
+        
+        product_data_format, description = product(request, url)
+        
+        return render(request, 'somando/product.html', {
+            'product': product_data_format,
+            'description': description,
+            'preview': True
+        })
     
-    return render(request, 'somando/product.html', {
-        'product': product_data,
-        'description': description,
-        'preview': True
-    })
+    else:
+        
+        return render(request, '401.html', status=401)
 
 
 def randomname(n):
