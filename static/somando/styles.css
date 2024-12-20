@@ -580,6 +580,10 @@ textarea {
     line-height: 25px;
 }
 
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
 @keyframes fadeInLeft {
     0% {
         transform: translateX(-30px);
