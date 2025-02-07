@@ -283,6 +283,7 @@ a img:hover {
 .title {
     width: 100%;
     animation-delay: 0s;
+    margin: 0;
 }
 
 .description {
@@ -302,6 +303,10 @@ a img:hover {
     margin: 100px 0 0 0;
 }
 
+h1.title {
+    text-align: center;
+}
+
 h2 {
     text-align: center;
     font-size: 40px;
@@ -310,10 +315,6 @@ h2 {
 h3 {
     text-align: left;
     font-size: 30px;
-}
-
-.title {
-    margin: 0;
 }
 
 .prof-about .description {
@@ -825,5 +826,9 @@ textarea {
     
     .send-div {
         display: block;
+    }
+
+    h1.title {
+        text-align: left;
     }
 }
