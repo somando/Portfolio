@@ -43,13 +43,13 @@ class ProductsData(models.Model):
 
 class SkillCategoryData(models.Model):
     title_en = models.CharField(max_length=100)
-    title_ja = models.CharField(max_length=100, null=True)
+    title_ja = models.CharField(max_length=100, null=True, blank=True)
     position = models.IntegerField(default=0, null=False)
 
 class SkillData(models.Model):
     title = models.CharField(max_length=100)
-    icon_id = models.CharField(max_length=100, null=True)
-    url = models.URLField(null=True)
+    icon_id = models.CharField(max_length=100, null=True, blank=True)
+    url = models.URLField(null=True, blank=True)
     detail = models.TextField(blank=True)
     position = models.IntegerField(default=0, null=False)
     show_top = models.BooleanField(default=True)
