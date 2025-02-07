@@ -53,7 +53,7 @@ class SkillData(models.Model):
     detail = models.TextField(blank=True)
     position = models.IntegerField(default=0, null=False)
     show_top = models.BooleanField(default=True)
-    category = models.ForeignKey(SkillCategoryData, on_delete=models.CASCADE, null=True, related_name='skills')
+    category = models.ForeignKey(SkillCategoryData, on_delete=models.CASCADE, null=True, related_name='skills', blank=True)
 
 class ContactRoomData(models.Model):
     room_id = models.CharField(max_length=20, unique=True)
