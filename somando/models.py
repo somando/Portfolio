@@ -41,10 +41,19 @@ class ProductsData(models.Model):
     link = models.TextField(blank=True)
     draft = models.BooleanField(default=False)
 
+class SkillCategoryData(models.Model):
+    title_en = models.CharField(max_length=100)
+    title_ja = models.CharField(max_length=100, null=True)
+    position = models.IntegerField(default=0, null=False)
+
 class SkillData(models.Model):
     title = models.CharField(max_length=100)
-    icon_id = models.CharField(max_length=100)
+    icon_id = models.CharField(max_length=100, null=True)
+    url = models.URLField(null=True)
     detail = models.TextField(blank=True)
+    position = models.IntegerField(default=0, null=False)
+    show_top = models.BooleanField(default=True)
+    category = models.ForeignKey(SkillCategoryData, on_delete=models.CASCADE, null=True, related_name='skills')
 
 class ContactRoomData(models.Model):
     room_id = models.CharField(max_length=20, unique=True)

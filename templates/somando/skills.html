@@ -1,0 +1,68 @@
+{% extends "somando/layout.html" %}
+{% load static %}
+{% block title %}Skills{{ block.super }}{% endblock title %}
+{% block meta %}
+    <meta type="og:type" content="website">
+    <meta type="og:title" content="Skills｜Soma Ando's Portfolio">
+    <meta type="og:url" content="{{ url }}{% url 'somando:skills' %}">
+    <meta type="og:description" content="今までに開発経験のある技術スタックをまとめています。">
+    <meta type="og:image" content="{{ static_profile.icon }}">
+{% endblock meta %}
+{% block content %}
+{% autoescape off %}
+<main id="skills-main">
+    <div id="skill" class="section">
+        <h2 class="title animation-wait">Skills</h2>
+        <p class="description fade-in-bottom05 animation-wait">技術スタック</p>
+        <div class="products">
+            {% for category in categories %}
+                {% if category.skills.all %}
+                    <h3 class="title animation-div animation-wait">{{ category.title_en }}</h3>
+                    <p class="description category-description fade-in-bottom05 animation-div animation-wait">{{ category.title_ja }}</p>
+                    {% for skill in category.skills.all %}
+                        <div class="item-box fade-in-bottom05 product-div animation-div animation-wait">
+                            <div class="animation-wait">
+                                {% if skill.icon_id %}
+                                    <div class="light"><img src="https://skillicons.dev/icons?i={{ skill.icon_id }}&theme=light"></div>
+                                    <div class="dark"><img src="https://skillicons.dev/icons?i={{ skill.icon_id }}&theme=dark"></div>
+                                {% elif skill.url %}
+                                    <div><img src="{{ skill.url }}"></div>
+                                {% endif %}
+                            </div>
+                            <p class="detail break-span"><span>{{ skill.title }}</span></p>
+                            {% if skill.detail %}
+                                <p class="detail-text break-span skill-detail-list">{{ skill.detail }}</p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+            {% if uncategorized_skills %}
+                <h3 class="title animation-div animation-wait">Other</h3>
+                <p class="description category-description fade-in-bottom05 animation-div animation-wait">その他</p>
+                {% for skill in uncategorized_skills %}
+                    <div class="item-box fade-in-bottom05 product-div animation-div animation-wait">
+                        <div class="animation-wait">
+                            {% if skill.icon_id %}
+                                <div class="light"><img src="https://skillicons.dev/icons?i={{ skill.icon_id }}&theme=light"></div>
+                                <div class="dark"><img src="https://skillicons.dev/icons?i={{ skill.icon_id }}&theme=dark"></div>
+                            {% elif skill.url %}
+                                <div><img src="{{ skill.url }}"></div>
+                            {% endif %}
+                        </div>
+                        <p class="detail break-span"><span>{{ skill.title }}</span></p>
+                        {% if skill.detail %}
+                            <p class="detail-text break-span skill-detail-list">{{ skill.detail }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</main>
+<script src="{% static "somando/fadein.js" %}"></script>
+<script>
+    delay_set("animation-div", 0.6, 0.1);
+</script>
+{% endautoescape %}
+{% endblock content %}

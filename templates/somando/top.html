@@ -72,13 +72,17 @@
             <div class="skills">
                 {% for skill in skills %}
                     <div class="skill-item fade-in-bottom05 skill-div animation-wait">
-                        <div class="light"><img src="https://skillicons.dev/icons?i={{ skill.icon_id }}&theme=light"></div>
-                        <div class="dark"><img src="https://skillicons.dev/icons?i={{ skill.icon_id }}&theme=dark"></div>
+                        {% if skill.icon_id %}
+                            <div class="light"><img src="https://skillicons.dev/icons?i={{ skill.icon_id }}&theme=light"></div>
+                            <div class="dark"><img src="https://skillicons.dev/icons?i={{ skill.icon_id }}&theme=dark"></div>
+                        {% elif skill.url %}
+                            <div><img src="{{ skill.url }}"></div>
+                        {% endif %}
                         <p>{{ skill.title }}</p>
                     </div>
                 {% endfor %}
             </div>
-            {% comment %} <p class="readmore fade-in-bottom05 skill-div animation-wait"><a href="">Read More ></a></p> {% endcomment %}
+            <p class="readmore fade-in-bottom05 skill-div animation-wait"><a href="{% url "somando:skills" %}">Read More ></a></p>
         </div>
     </main>
     <script src="{% static "somando/fadein.js" %}"></script>

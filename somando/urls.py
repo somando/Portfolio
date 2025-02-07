@@ -25,6 +25,7 @@ urlpatterns = [
     path('products', views.products, name='products'),
     path('products/<slug:url>', views.productPublic, name='product'),
     path('products/<slug:url>/preview', views.productDraft, name='productDraft'),
+    path('skills', views.skills, name='skills'),
     path('contact', views.contact, name='contact'),
     path('contact/login', views.contactLogin, name='contactLogin'),
     path('contact/chat/<slug:id>', views.contactChat, name='contactChat'),

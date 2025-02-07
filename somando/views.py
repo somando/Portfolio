@@ -2,6 +2,7 @@ from django.urls import reverse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.template.loader import get_template
+from django.db.models import Case, When, Value, IntegerField, Prefetch
 from django.core.mail import EmailMultiAlternatives
 from .models import *
 import random, string
@@ -48,7 +49,13 @@ def top(request):
         product.link = product.link.replace('\span', "</span><span>")
         product.link = splitSlash(product.link)
     
-    skills = SkillData.objects.all()
+    skills = SkillData.objects.filter(show_top=True).annotate(
+        null_category=Case(
+            When(category__isnull=True, then=Value(1)),  # category が NULL の場合は 1
+            default=Value(0),                            # それ以外は 0
+            output_field=IntegerField()
+        )
+    ).order_by('null_category', 'category__position', 'position')
     
     return render(request, 'somando/top.html', {
         'static_profile': static_profile,
@@ -158,6 +165,20 @@ def productDraft(request, url):
     else:
         
         return render(request, '401.html', status=401)
+
+
+def skills(request):
+    
+    categories = SkillCategoryData.objects.prefetch_related(
+        Prefetch('skills', queryset=SkillData.objects.filter(show_top=True).order_by('position'))
+    ).order_by('position')
+    
+    uncategorized_skills = SkillData.objects.filter(category__isnull=True, show_top=True).order_by('position')
+    
+    return render(request, 'somando/skills.html', {
+        'categories': categories,
+        'uncategorized_skills': uncategorized_skills,
+    })
 
 
 def randomname(n):
