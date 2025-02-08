@@ -170,10 +170,10 @@ def productDraft(request, url):
 def skills(request):
     
     categories = SkillCategoryData.objects.prefetch_related(
-        Prefetch('skills', queryset=SkillData.objects.filter(show_top=True).order_by('position'))
+        Prefetch('skills', queryset=SkillData.objects.all().order_by('position'))
     ).order_by('position')
     
-    uncategorized_skills = SkillData.objects.filter(category__isnull=True, show_top=True).order_by('position')
+    uncategorized_skills = SkillData.objects.filter(category__isnull=True).order_by('position')
     
     return render(request, 'somando/skills.html', {
         'categories': categories,
