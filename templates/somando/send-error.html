@@ -1,0 +1,30 @@
+{% extends "somando/layout.html" %}
+{% load static %}
+{% block title %}Contact{{ block.super }}{% endblock title %}
+{% block meta %}
+    <meta type="og:type" content="website">
+    <meta type="og:title" content="Contact｜Soma Ando's Portfolio">
+    <meta type="og:url" content="{{ url }}{% url 'somando:contact' %}">
+    <meta type="og:description" content="お問い合わせフォームはこちらです。現在お問い合わせ中の方はルームへログインできます。">
+    <meta type="og:image" content="{{ static_profile.icon }}">
+{% endblock meta %}
+{% block content %}
+{% autoescape off %}
+<main id="contact-main">
+    <div id="contact" class="section">
+        <h2 class="title animation-wait">Contact</h2>
+        <p class="description fade-in-bottom05 animation-wait">お問い合わせ</p>
+        <div class="contact">
+            <div class="item-box fade-in-bottom05 contact-div animation-wait">
+                <p class="detail break-span"><span>お問い合わせを</span><span>受け付けできませんでした。</span></p>
+                <p class="detail-text break-span"><span>送信がスパムと判定されましたので、</span><span>問い合わせをお受けできません。</span></p>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="{% static "somando/fadein.js" %}"></script>
+<script>
+    delay_set("contact-div", 0.6, 0.2);
+</script>
+{% endautoescape %}
+{% endblock content %}

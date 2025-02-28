@@ -14,7 +14,7 @@
     <div id="contact" class="section">
         <h2 class="title animation-wait">Contact</h2>
         <p class="description fade-in-bottom05 animation-wait">お問い合わせ</p>
-        <form method="post">
+        <form method="post" onsubmit="onSubmit(event)">
             {% csrf_token %}
             <div class="contact">
                 <div class="item-box fade-in-bottom05 contact-div animation-wait">
@@ -59,6 +59,7 @@
                     <p class="detail-text break-span"><span>このフォームを</span><span>送信することで、</span><span> <a href="{% url "somando:privacy-policy" %}" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a> <i class="fa-regular fa-clone"></i> に</span><span>同意したものと</span><span>みなします。</span></p>
                 </div>
                 <div class="item-box fade-in-bottom05 contact-div animation-wait contact-button">
+                    <input type="hidden" id="recaptcha-token" name="g-recaptcha-response">
                     <button class="contact-button">送信</button>
                 </div>
             </div>

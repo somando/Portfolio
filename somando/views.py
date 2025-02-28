@@ -5,7 +5,7 @@ from django.template.loader import get_template
 from django.db.models import Case, When, Value, IntegerField, Prefetch
 from django.core.mail import EmailMultiAlternatives
 from .models import *
-import random, string
+import random, string, os, requests
 
 # Create your views here.
 
@@ -126,8 +126,6 @@ def product(request, url):
 
 def productPublic(request, url):
     
-    print("C")
-    
     if (not ProductsData.objects.filter(url=url).filter(draft=False).exists()):
         return render(request, '404.html', status=404)
     
@@ -145,11 +143,9 @@ def productDraft(request, url):
     product_data = ProductsData.objects.filter(url=url)
     
     if not product_data.exists():
-        print("A")
         return render(request, '404.html', status=404)
     
     if not product_data.first().draft:
-        print("B")
         return redirect('somando:product', url=url, permanent=False)
     
     if request.user.is_authenticated:
@@ -223,6 +219,9 @@ def contact(request):
         organization = request.POST['organization']
         details = request.POST['details']
         
+        recaptcha = request.POST['g-recaptcha-response']
+        recaptcha_secret = os.getenv('RECAPTCHA_SECRET_KEY')
+        
         while True:
             room_id = randomname(20)
             if ContactRoomData.objects.filter(room_id=room_id).count() == 0:
@@ -230,44 +229,56 @@ def contact(request):
         
         auth_code = randomname(6)
         
-        ContactRoomData.objects.create(
-            room_id = room_id,
-            auth_code = auth_code,
-            email = email,
-            close = False,
-        )
-        
-        ContactMessageData.objects.create(
-            room_id = room_id,
-            user = name,
-            organization = organization,
-            admin = False,
-            message = details,
-        )
-        
-        subject = 'お問い合わせを受け付けました｜Soma Ando'
-        
-        context = {
-            'name': name, 
-            'email': email, 
-            'organization': organization, 
-            'message': details, 
-            'id': room_id, 
-            'key': auth_code,
-        }
-        txt_content = get_template('mail/contact_create.txt').render(context)
-        mail = EmailMultiAlternatives(subject=subject, body=txt_content, from_email='no-reply@somando.jp', to=[email], bcc=['info@somando.jp'])
-        mail.send()
-        
-        response = render(request, 'somando/submitted.html', {
-            'auth': auth_code,
-            'id': room_id,
-            'email': email,
+        response = requests.post('https://www.google.com/recaptcha/api/siteverify', data={
+            'secret': recaptcha_secret,
+            'response': recaptcha,
         })
-        response.set_cookie('contact_room_id', room_id)
-        response.set_cookie('contact_room_auth', auth_code)
+        result = response.json()
         
-        return response
+        if result.get('success') and result.get('score') > 0.5:
+            
+            ContactRoomData.objects.create(
+                room_id = room_id,
+                auth_code = auth_code,
+                email = email,
+                close = False,
+            )
+            
+            ContactMessageData.objects.create(
+                room_id = room_id,
+                user = name,
+                organization = organization,
+                admin = False,
+                message = details,
+            )
+            
+            subject = 'お問い合わせを受け付けました｜Soma Ando'
+            
+            context = {
+                'name': name, 
+                'email': email, 
+                'organization': organization, 
+                'message': details, 
+                'id': room_id, 
+                'key': auth_code,
+            }
+            txt_content = get_template('mail/contact_create.txt').render(context)
+            mail = EmailMultiAlternatives(subject=subject, body=txt_content, from_email='no-reply@somando.jp', to=[email], bcc=['info@somando.jp'])
+            mail.send()
+            
+            response = render(request, 'somando/submitted.html', {
+                'auth': auth_code,
+                'id': room_id,
+                'email': email,
+            })
+            response.set_cookie('contact_room_id', room_id)
+            response.set_cookie('contact_room_auth', auth_code)
+            
+            return response
+        
+        else:
+            
+            return render(request, 'somando/send-error.html')
 
 def contactLogin(request):
     

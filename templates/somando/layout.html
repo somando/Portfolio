@@ -24,6 +24,18 @@
         gtag('js', new Date());
         gtag('config', 'G-1YP209H4S4');
     </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcF4uQqAAAAABx0T3KGSiLESh_IBDRt9Op5oNoJ"></script>
+    <script>
+        function onSubmit(event) {
+            event.preventDefault();
+            grecaptcha.ready(function() {
+                grecaptcha.execute("6LcF4uQqAAAAABx0T3KGSiLESh_IBDRt9Op5oNoJ", {action: "contact"}).then(function(token) {
+                    document.getElementById("recaptcha-token").value = token;
+                    document.getElementById("contact-form").submit();
+                });
+            });
+        }
+    </script>
 </head>
 <body>
     {% block content %}{% endblock content %}
